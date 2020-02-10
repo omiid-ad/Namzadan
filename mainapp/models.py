@@ -36,8 +36,8 @@ class Candidate(models.Model):
         (UNKNOWN, 'نامشخص'),
     ]
 
-    profile_picture_url = models.ImageField(upload_to="pps", blank=True, null=True, default="pps/default.png",
-                                            verbose_name="عکس پروفایل")
+    profile_picture_url = models.ImageField(upload_to="pps", default="pps/default.png", blank=True, null=True,
+                                            verbose_name="عکس پروفایل")  # 120*160px
     full_name = models.CharField(max_length=50, verbose_name="نام و نام خانوادگی")
     nickname = models.CharField(max_length=50, blank=True, verbose_name="نام مستعار(مشهور به)")
     father_name = models.CharField(max_length=50, verbose_name="نام پدر")
@@ -49,9 +49,10 @@ class Candidate(models.Model):
     def __str__(self):
         return self.full_name + " - " + self.code
 
-    def image_not_found(self):
-        if not self.profile_picture_url:
+    def save(self, *args, **kwargs):
+        if not self.profile_picture_url or self.profile_picture_url is None:
             self.profile_picture_url = "pps/default.png"
+        super().save()
 
 
 class Resume(models.Model):
