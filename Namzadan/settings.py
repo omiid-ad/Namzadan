@@ -79,7 +79,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'OPTIONS': {
-            'read_default_file': '/etc/mysql/NamzadanDB.cnf',
+            'read_default_file': 'NamzadanDB.cnf',
         },
     }
 }
