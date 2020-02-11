@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '%$11^aq4@5hjvsfne-u%(=mk=fr%fsumejlh$)ox*!6#ay!ixl'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['namzadan.ir', '127.0.0.1']
 
 
 # Application definition

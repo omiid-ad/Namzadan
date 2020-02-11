@@ -76,7 +76,7 @@ def home(request):
 
 
 def contact_us(request):
-    return HttpResponse("contact us page")
+    return render(request, 'mainapp/AboutUs.html')
 
 
 def resume(request, pk):
