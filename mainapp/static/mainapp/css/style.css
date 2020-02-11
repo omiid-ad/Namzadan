@@ -42,7 +42,8 @@ figure.user-card .profile {
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
-    max-width: 120px;;
+    max-width: 120px;
+    max-height: 162px;
     margin-bottom: 20px;
 }
 

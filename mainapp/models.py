@@ -36,8 +36,9 @@ class Candidate(models.Model):
         (UNKNOWN, 'نامشخص'),
     ]
 
-    profile_picture_url = models.ImageField(upload_to="pps", default="pps/default.png", blank=True, null=True,
-                                            verbose_name="عکس پروفایل")  # 120*160px
+    profile_picture_url = models.ImageField(upload_to='images', default="images/default.png",
+                                            blank=True, null=True,
+                                            verbose_name="عکس پروفایل")  # 120*162px
     full_name = models.CharField(max_length=50, verbose_name="نام و نام خانوادگی")
     nickname = models.CharField(max_length=50, blank=True, verbose_name="نام مستعار(مشهور به)")
     father_name = models.CharField(max_length=50, verbose_name="نام پدر")
