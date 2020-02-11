@@ -57,5 +57,38 @@ class Candidate(models.Model):
 
 
 class Resume(models.Model):
+    SIKL = 'SI'
+    DIPLOM = 'DI'
+    FOQEDIPLOM = 'FD'
+    LISANS = 'LI'
+    FOQELISANS = 'FL'
+    DOCTOR = 'DO'
+    FOQEDOCTOR = 'FDD'
+    HOZAVI = 'HO'
+    UNKNOWN = 'UN'
+    DEGREES = [
+        (SIKL, 'سیکل'),
+        (DIPLOM, 'دیپلم'),
+        (FOQEDIPLOM, 'فوق دیپلم'),
+        (LISANS, 'لیسانس'),
+        (FOQELISANS, 'فوق لیسانس'),
+        (DOCTOR, 'دکتری'),
+        (FOQEDOCTOR, 'فوق دکتری'),
+        (HOZAVI, 'حوزوی'),
+        (UNKNOWN, 'نامشخص'),
+    ]
     candidate = models.ForeignKey(Candidate, on_delete=models.CASCADE, verbose_name="نامزد")
-    # fill with proper attributes
+    age = models.IntegerField(blank=True, null=True, verbose_name="سن")
+    degree = models.CharField(max_length=50, blank=True, choices=DEGREES, default=UNKNOWN, verbose_name="مدرک تحصیلی")
+    field = models.CharField(max_length=50, blank=True, verbose_name="رشته تحصیلی")
+    birth_locate = models.CharField(max_length=50, blank=True, verbose_name="محل تولد")
+    biography = models.TextField(blank=True, verbose_name="زندگی نامه")
+    records = models.TextField(blank=True, verbose_name="سوابق")
+    banner1 = models.ImageField(upload_to="banners", default="banners/default.jpg", blank=True,
+                                verbose_name="پوستر۱")  # 240*320
+    banner2 = models.ImageField(upload_to="banners", default="banners/default.jpg", blank=True, verbose_name="پوستر۲")
+    banner3 = models.ImageField(upload_to="banners", default="banners/default.jpg", blank=True, verbose_name="پوستر۳")
+    banner4 = models.ImageField(upload_to="banners", default="banners/default.jpg", blank=True, verbose_name="پوستر۴")
+
+    def __str__(self):
+        return self.candidate.full_name
