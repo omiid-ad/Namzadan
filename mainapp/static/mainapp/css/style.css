@@ -1,0 +1,229 @@
+@font-face {
+    font-family: "IRANSans";
+    src: url('../fonts/ttf/IRANSansWeb.ttf');
+    font-weight: 900;
+    font-style: normal;
+}
+
+* {
+    font-family: IRANSans, sans-serif;
+}
+
+body {
+    background: #f2f2f2;
+}
+
+.page-container {
+    margin-top: 40px;
+}
+
+figure.user-card {
+    background: #ffffff;
+    padding: 20px;
+    border-top: 3px solid #f2f2f2;
+    border: 1px solid #e1e5f1;
+    text-align: center;
+}
+
+figure.user-card.red {
+    border-top: 3px solid #fc6d4c;
+}
+
+figure.user-card.green {
+    -webkit-box-shadow: 0px 0px 4px 0px rgba(189, 185, 189, 1);
+    -moz-box-shadow: 0px 0px 4px 0px rgba(189, 185, 189, 1);
+    box-shadow: 0px 0px 4px 0px rgba(189, 185, 189, 1);
+    border-radius: 5px;
+    background: rgb(219, 0, 0);
+    background: linear-gradient(5deg, rgba(219, 0, 0, 1) 0%, rgba(255, 255, 255, 1) 33%, rgba(241, 255, 240, 1) 66%, rgba(29, 160, 62, 1) 100%);
+}
+
+figure.user-card .profile {
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    max-width: 120px;;
+    margin-bottom: 20px;
+}
+
+figure.user-card h5 {
+    margin: 0 0 20px 0;
+}
+
+figure.user-card h6 {
+    margin: 0 0 15px 0;
+    font-size: 14px;
+}
+
+figure.user-card p {
+    margin: 0;
+    padding: 0 0 15px 0;
+    line-height: 150%;
+    font-size: .85rem;
+}
+
+figure.user-card ul.contacts {
+    margin: 0;
+    padding: 0 0 15px 0;
+    line-height: 150%;
+    font-size: .85rem;
+}
+
+figure.user-card ul.contacts li {
+    padding: .2rem 0;
+}
+
+figure.user-card ul.contacts li a {
+    color: #5a99ee;
+}
+
+figure.user-card ul.contacts li a i {
+    min-width: 36px;
+    float: left;
+    font-size: 1rem;
+}
+
+figure.user-card ul.contacts li:last-child a {
+    color: #ff5000;
+}
+
+ul li {
+    list-style-type: none;
+}
+
+nav {
+    direction: rtl;
+}
+
+.Searchbutton {
+    margin-right: 5px;
+}
+
+.morebtn {
+    margin-top: 22px;
+    display: flex;
+    justify-content: center;
+}
+
+.downpage-Pagination {
+    margin-top: 2rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.page-link {
+    position: relative;
+    display: block;
+    padding: .5rem .75rem;
+    margin-left: -1px;
+    line-height: 1.25;
+    color: #28a745;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+}
+
+.page-link:hover {
+    z-index: 2;
+    color: #e9ecef !important;
+    text-decoration: none;
+    background-color: #28a745 !important;
+    border-color: #28a745 !important;
+}
+
+.filters {
+    border-radius: 15px;
+    border: 1px solid rgba(29, 160, 62, 1);;
+    padding: 2rem;
+    margin: 3rem 0rem;
+    direction: rtl;
+    -webkit-box-shadow: 0px 0px 6px -3px rgba(153, 153, 153, 1);
+    -moz-box-shadow: 0px 0px 6px -3px rgba(153, 153, 153, 1);
+    box-shadow: 0px 0px 6px -3px rgba(153, 153, 153, 1);
+}
+
+.col-md-4.searchbtn {
+    text-align: center;
+}
+
+.form-group.col-md-3 {
+    margin-right: 4rem;
+}
+
+.navigationbar {
+    background: rgb(219, 0, 0);
+    background: linear-gradient(74deg, rgba(219, 0, 0, 1) 0%, rgba(255, 255, 255, 1) 50%, rgba(29, 160, 62, 1) 100%);
+}
+
+a.nav-link {
+    color: black;
+}
+
+button.navbar-toggler.collapsed {
+    margin-bottom: 10px !important;
+}
+
+.navbar-nav .nav-link {
+    padding-right: 0;
+    padding-left: 0;
+    text-align: right;
+}
+
+
+/* Profile styles */
+
+.main-body {
+    display: grid;
+    grid-template-columns: 20% 60% 20%;
+    grid-template-rows: auto;
+    padding: 10px;
+}
+
+.Main-content {
+    margin-top: 3rem;
+    display: grid;
+    grid-template-columns: 65% 35%;
+    grid-template-rows: auto;
+    text-align: right;
+}
+
+.Resumetitle {
+    margin-bottom: 2rem !important;
+}
+
+.biographytitle {
+    margin: 2rem 0rem !important;
+}
+
+.Past-Activities {
+    margin-top: 1rem;
+}
+
+.media-body {
+    line-height: 40px;
+}
+
+.left-sidebar {
+    text-align: center;
+}
+
+.side-posters {
+    width: 240px;
+    height: 320px;
+    margin: 3px 0px;
+    -webkit-box-shadow: 0px 0px 3px 0px rgba(204, 204, 204, 1);
+    -moz-box-shadow: 0px 0px 3px 0px rgba(204, 204, 204, 1);
+    box-shadow: 0px 0px 3px 0px rgba(204, 204, 204, 1);
+}
+
+.right-sidebar {
+    text-align: center;
+}
+
+.jumbotron.Past-Activities {
+    background: rgb(219, 0, 0);
+    background: linear-gradient(0deg, rgba(219, 0, 0, 1) 0%, rgba(255, 255, 255, 1) 25%, rgba(214, 238, 220, 1) 75%, rgba(29, 160, 62, 1) 100%);
+    -webkit-box-shadow: 0px 0px 3px 0px rgba(204, 204, 204, 1);
+    -moz-box-shadow: 0px 0px 3px 0px rgba(204, 204, 204, 1);
+    box-shadow: 0px 0px 3px 0px rgba(204, 204, 204, 1);
+}
