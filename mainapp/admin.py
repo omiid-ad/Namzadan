@@ -37,11 +37,27 @@ class ZoneA(admin.ModelAdmin):
     list_filter = ('city',)
 
 
+class ResumeA(admin.ModelAdmin):
+    list_display = ('candidate', 'age', 'birth_locate', 'degree',)
+    list_filter = ('birth_locate', 'field', 'degree', 'candidate__zone',)
+    search_fields = ['candidate__full_name', 'candidate__code']
+    fieldsets = (
+        (None, {
+            'fields': (
+                ('candidate', 'age', 'birth_locate', 'degree', 'field'), ('biography', 'records'), 'banner1')
+        }),
+        ('پوسترهای بیشتر', {
+            'classes': ('collapse',),
+            'fields': ('banner2', 'banner3', 'banner4')
+        }),
+    )
+
+
 admin.site.unregister(Group)
 admin.site.unregister(User)
 
 admin.site.register(Candidate, CandidateA)
-admin.site.register(Resume)
+admin.site.register(Resume, ResumeA)
 admin.site.register(Province, ProvinceA)
 admin.site.register(City, CityA)
 admin.site.register(Zone, ZoneA)
