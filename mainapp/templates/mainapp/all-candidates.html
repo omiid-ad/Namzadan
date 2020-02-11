@@ -1,0 +1,126 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <!--  This file has been downloaded from https://bootdey.com  -->
+    <!--  All snippets are MIT license https://bootdey.com/license -->
+    <title>نامزدان</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'mainapp/css/style.css' %}">
+</head>
+
+<body>
+<!-- Nav -->
+<nav class="navbar navbar-expand-lg navigationbar">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'home' %}">مشاهده نامزدها</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">تماس با ما</a>
+            </li>
+
+        </ul>
+    </div>
+    <div>
+        <form class="form-inline" method="post" action="{% url 'home' %}">
+            {% csrf_token %}
+            <input name="search" class="form-control mr-sm-2" type="search" placeholder="جستجو" aria-label="Search">
+            <button class="btn btn-outline-dark my-2 my-sm-0 Searchbutton" type="submit">جستجو</button>
+        </form>
+    </div>
+</nav>
+<!-- /nav -->
+<div class="container page-container">
+    <div class="filters">
+        <form method="post" action="{% url 'home' %}">
+            {% csrf_token %}
+            <div class="form-row">
+                <div class="form-group col-md-3 ">
+                    <select name="city" id="inputState" class="form-control">
+                        <option value="none" selected>شهر</option>
+                        {% if all_cities %}
+                            {% for c in all_cities %}
+                                <option value="{{ c.pk }}">{{ c.name }}</option>
+                            {% endfor %}
+                        {% endif %}
+                    </select>
+                </div>
+                <div class="form-group col-md-3">
+                    <select name="zone" id="inputState" class="form-control">
+                        <option value="none" selected>حوزه</option>
+                        {% if all_zones %}
+                            {% for z in all_zones %}
+                                <option value="{{ z.pk }}">{{ z.name }} - {{ z.city.name }}</option>
+                            {% endfor %}
+                        {% endif %}
+                    </select>
+                </div>
+                <div class="col-md-4 searchbtn">
+                    <button type="submit" class="btn btn-success">اعمال فیلترها</button>
+                </div>
+            </div>
+        </form>
+
+
+    </div>
+    <div class="row gutters">
+        <!-- Candidates -->
+        {% if page_obj %}
+            {% for cn in page_obj %}
+                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-4 col-12">
+                    <figure class="user-card green">
+                        <figcaption>
+                            <img src="{{ cn.profile_picture_url }}" alt="تصویر نمایه" class="profile">
+                            <h5 class="CadidateName"> {{ cn.full_name }} </h5>
+                            <h6 class="CandidateCity"> {{ cn.zone.city.name }}</h6>
+                            <p>{{ cn.motto }}</p>
+                            <span class="badge">کد نامرد : {{ cn.code }}</span>
+
+                            <li class="morebtn">
+                                {% if not cn.resume_set %}
+                                    <a class="btn btn-danger text-muted muted" href="#">مشاهده ی رزومه</a>
+                                {% else %}
+                                    <a class="btn btn-success" href="#">مشاهده ی رزومه</a>
+                                    </li>
+                                {% endif %}
+                        </figcaption>
+                    </figure>
+                </div>
+            {% endfor %}
+        {% endif %}
+        <div class="downpage-Pagination">
+            <nav aria-label="Page navigation example">
+                {% if page_obj.has_previous %}
+                    <a class="page-item" href="?page=1">&laquo; نخست</a>
+                    <a href="?page={{ page_obj.previous_page_number }}">قبلی</a>
+                {% endif %}
+
+                <span class="current">
+            صفحه {{ page_obj.number }} از {{ page_obj.paginator.num_pages }}.
+        </span>
+                {% if page_obj.has_next %}
+                    <a class="page-item" href="?page={{ page_obj.next_page_number }}">بعدی</a>
+                    <a href="?page={{ page_obj.paginator.num_pages }}">آخرین &raquo;</a>
+                {% endif %}
+            </nav>
+        </div>
+    </div>
+</div>
+
+
+<script src="http://netdna.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+</script>
+</body>
+
+</html>
