@@ -228,3 +228,20 @@ button.navbar-toggler.collapsed {
     -moz-box-shadow: 0px 0px 3px 0px rgba(204, 204, 204, 1);
     box-shadow: 0px 0px 3px 0px rgba(204, 204, 204, 1);
 }
+
+.message-custom {
+    width: fit-content;
+}
+
+.text-right label, input {
+    /*float: right;*/
+    direction: rtl;
+    text-align: right;
+    width: 95%;
+}
+
+.text-right input {
+    text-align: center;
+!important;
+
+}

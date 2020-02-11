@@ -1,10 +1,11 @@
+from django.contrib import messages
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect
 from django.db.models import Q
 from django.core.paginator import Paginator
 from Namzadan import settings
 
-from .models import Candidate, City, Zone
+from .models import Candidate, City, Zone, Resume
 
 
 def home(request):
@@ -77,4 +78,14 @@ def home(request):
 def contact_us(request):
     return HttpResponse("contact us page")
 
-# search views
+
+def resume(request, pk):
+    MEDIA_URL = settings.MEDIA_URL
+    try:
+        resume = Resume.objects.get(candidate_id=pk)
+    except:
+        resume = None
+    if resume is None:
+        messages.error(request, "رزومه ای برای کاندیدای مورد نظر یافت نشد")
+        return redirect('home')
+    return render(request, 'mainapp/resume.html', {'resume': resume, 'MEDIA_URL': MEDIA_URL})

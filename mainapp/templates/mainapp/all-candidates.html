@@ -41,6 +41,16 @@
 </nav>
 <!-- /nav -->
 <div class="container page-container">
+    <div class="text-right message-custom">
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li{% if message.tags %} class="alert {{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+
     <div class="filters">
         <form method="post" action="{% url 'home' %}">
             {% csrf_token %}
@@ -85,14 +95,9 @@
                             <h6 class="CandidateCity"> {{ cn.zone.city.name }}</h6>
                             <p>{{ cn.motto }}</p>
                             <span class="badge">کد نامرد : {{ cn.code }}</span>
-
                             <li class="morebtn">
-                                {% if not cn.resume_set %}
-                                    <a class="btn btn-danger text-muted muted" href="#">مشاهده ی رزومه</a>
-                                {% else %}
-                                    <a class="btn btn-success" href="#">مشاهده ی رزومه</a>
-                                    </li>
-                                {% endif %}
+                                <a class="btn btn-success" href="{% url 'resume' cn.pk %}">مشاهده ی رزومه</a>
+                            </li>
                         </figcaption>
                     </figure>
                 </div>
