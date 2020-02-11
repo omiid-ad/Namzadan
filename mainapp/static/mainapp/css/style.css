@@ -134,7 +134,8 @@ nav {
 
 .filters {
     border-radius: 15px;
-    border: 1px solid rgba(29, 160, 62, 1);;
+    border: 1px solid rgba(29, 160, 62, 1);
+    ;
     padding: 2rem;
     margin: 3rem 0rem;
     direction: rtl;
@@ -233,7 +234,8 @@ button.navbar-toggler.collapsed {
     width: fit-content;
 }
 
-.text-right label, input {
+.text-right label,
+input {
     /*float: right;*/
     direction: rtl;
     text-align: right;
@@ -241,7 +243,24 @@ button.navbar-toggler.collapsed {
 }
 
 .text-right input {
-    text-align: center;
-!important;
+    text-align: center !important;
+}
 
+.main-aboutus {
+    margin-top: 2rem;
+    text-align: right;
+}
+
+.jumbotron.jumbotron-fluid {
+    border: 1px solid green;
+    border-radius: 15px;
+}
+
+p.Aboutustext {
+    line-height: 35px;
+}
+
+h3.Aboutustitle {
+    text-align: center;
+    margin-bottom: 2rem;
 }
