@@ -81,8 +81,9 @@ class Resume(models.Model):
     age = models.IntegerField(blank=True, null=True, verbose_name="سن")
     degree = models.CharField(max_length=50, blank=True, choices=DEGREES, default=UNKNOWN, verbose_name="مدرک تحصیلی")
     field = models.CharField(max_length=50, blank=True, verbose_name="رشته تحصیلی")
-    birth_locate = models.CharField(max_length=50, blank=True, verbose_name="محل تولد")
-    biography = models.TextField(blank=True, verbose_name="زندگی نامه")
+    moarefi_barnameha = models.TextField(blank=True, verbose_name="معرفی برنامه ها")
+    #birth_locate = models.CharField(max_length=50, blank=True, verbose_name="محل تولد")
+    #biography = models.TextField(blank=True, verbose_name="زندگی نامه")
     records = models.TextField(blank=True, verbose_name="سوابق")
     banner1 = models.ImageField(upload_to="banners", default="banners/default.jpg", blank=True,
                                 verbose_name="پوستر۱")  # 240*320
