@@ -9,9 +9,11 @@ from .models import Candidate, City, Zone, Resume, Province
 
 
 def home(request):
-    all_candidates = Candidate.objects.all()
+    all_candidates = Candidate.objects.filter(zone__city__province_name="تهران")
     all_provinces = Province.objects.all().order_by('name')
     all_zones = Zone.objects.all().order_by('city__name')
+    teh_province = Province.objects.get(name="تهران")
+    teh_candidates = Candidate.objects.filter(zone__city__province=teh_province)
     MEDIA_URL = settings.MEDIA_URL
     paginator = Paginator(all_candidates, 12)
     page_number = request.GET.get('page')
@@ -19,7 +21,7 @@ def home(request):
     if request.method == 'GET':
         return render(request, 'mainapp/all-candidates.html',
                       {'all_candidates': all_candidates, 'all_provinces': all_provinces, 'all_zones': all_zones,
-                       'page_obj': page_obj, 'MEDIA_URL': MEDIA_URL})
+                       'page_obj': page_obj, 'MEDIA_URL': MEDIA_URL, 'teh_province': teh_province, 'teh_candidates': teh_candidates})
     else:
         if 'search' in request.POST:
             search_text = str(request.POST['search'])
@@ -34,7 +36,7 @@ def home(request):
             return render(request, 'mainapp/all-candidates.html',
                           {'all_candidates': all_candidates, 'all_provinces': all_provinces, 'all_zones': all_zones,
                            'MEDIA_URL': MEDIA_URL,
-                           'page_obj': page_obj})
+                           'page_obj': page_obj, 'teh_province': teh_province, 'teh_candidates': teh_candidates})
         province_pk = request.POST['province']
         zone_pk = request.POST['zone']
         if province_pk == "none":
@@ -42,7 +44,7 @@ def home(request):
                 return render(request, 'mainapp/all-candidates.html',
                               {'all_candidates': all_candidates, 'all_provinces': all_provinces, 'all_zones': all_zones,
                                'MEDIA_URL': MEDIA_URL,
-                               'page_obj': page_obj})
+                               'page_obj': page_obj, 'teh_province': teh_province, 'teh_candidates': teh_candidates})
         if province_pk == "none":
             if zone_pk != "none":
                 all_candidates = Candidate.objects.filter(zone_id=zone_pk)
@@ -52,7 +54,7 @@ def home(request):
                 return render(request, 'mainapp/all-candidates.html',
                               {'all_candidates': all_candidates, 'all_provinces': all_provinces, 'all_zones': all_zones,
                                'MEDIA_URL': MEDIA_URL,
-                               'page_obj': page_obj})
+                               'page_obj': page_obj, 'teh_province': teh_province, 'teh_candidates': teh_candidates})
         if province_pk != "none":
             if zone_pk == "none":
                 all_candidates = Candidate.objects.filter(zone__city__province_id=province_pk)
@@ -62,7 +64,7 @@ def home(request):
                 return render(request, 'mainapp/all-candidates.html',
                               {'all_candidates': all_candidates, 'all_provinces': all_provinces, 'all_zones': all_zones,
                                'MEDIA_URL': MEDIA_URL,
-                               'page_obj': page_obj})
+                               'page_obj': page_obj, 'teh_province': teh_province, 'teh_candidates': teh_candidates})
         if province_pk != "none":
             if zone_pk != "none":
                 all_candidates = Candidate.objects.filter(zone__city__province_id=province_pk, zone_id=zone_pk)
@@ -72,7 +74,7 @@ def home(request):
                 return render(request, 'mainapp/all-candidates.html',
                               {'all_candidates': all_candidates, 'all_provinces': all_provinces, 'all_zones': all_zones,
                                'MEDIA_URL': MEDIA_URL,
-                               'page_obj': page_obj})
+                               'page_obj': page_obj, 'teh_province': teh_province, 'teh_candidates': teh_candidates})
 
 
 def contact_us(request):
