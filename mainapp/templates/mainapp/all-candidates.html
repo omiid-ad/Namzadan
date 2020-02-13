@@ -54,18 +54,18 @@
             {% csrf_token %}
             <div class="form-row">
                 <div class="form-group col-md-3 ">
-                    <select name="city" id="inputState" class="form-control">
-                    <option value="none" selected>شهر</option>
-                    {% if all_cities %}
-                        {% for c in all_cities %}
-                            <option value="{{ c.pk }}">{{ c.name }}</option>
+                    <select name="province" id="inputState" class="form-control">
+                    <option value="none" selected>استان</option>
+                    {% if all_provinces %}
+                        {% for p in all_provinces %}
+                            <option value="{{ p.pk }}">{{ p.name }}</option>
                         {% endfor %}
                     {% endif %}
                 </select>
                 </div>
                 <div class="form-group col-md-3">
                     <select name="zone" id="inputState" class="form-control">
-                    <option value="none" selected>حوزه</option>
+                    <option value="none" selected>حوزه انتخاباتی</option>
                     {% if all_zones %}
                         {% for z in all_zones %}
                             <option value="{{ z.pk }}">{{ z.name }} - {{ z.city.name }}</option>
@@ -109,7 +109,6 @@
                             <img src="{{ MEDIA_URL }}{{ cn.profile_picture_url }}" alt="تصویر نمایه" class="profile">
                             <h5 class="CadidateName"> {{ cn.full_name }} </h5>
                             <h6 class="CandidateCity"> {{ cn.zone.city.name }}</h6>
-                            <p>{{ cn.motto }}</p>
                             <span class="badge">کد نامزد : {{ cn.code }}</span>
                             <li class="morebtn">
                                 <a class="btn btn-success" href="{% url 'resume' cn.pk %}">مشاهده ی رزومه</a>
