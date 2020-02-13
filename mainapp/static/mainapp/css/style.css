@@ -16,6 +16,11 @@
     .left-sidebar {
         display: none;
     } */
+    .candidates {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
     .main-body {
         display: grid;
         grid-template-columns: auto;
@@ -303,7 +308,7 @@ h3.Aboutustitle {
 
 .griding-div {
     display: grid;
-    grid-template-columns: 10% 80% 10%;
+    grid-template-columns: 17% 66% 17%;
 }
 
 .desc-title {
@@ -322,4 +327,21 @@ span {
 
 p.textnav {
     margin: 0rem 2rem;
+}
+
+label {
+    display: inline-block;
+    margin-bottom: .5rem;
+    color: black;
+    margin-top: 0.5rem;
+    margin-left: 1rem;
+}
+
+.form-group.col-md-3 {
+    display: inline-flex;
+}
+
+.candidates {
+    display: flex;
+    justify-content: center;
 }
