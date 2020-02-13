@@ -38,13 +38,13 @@ class ZoneA(admin.ModelAdmin):
 
 
 class ResumeA(admin.ModelAdmin):
-    list_display = ('candidate', 'age', 'birth_locate', 'degree',)
-    list_filter = ('birth_locate', 'field', 'degree', 'candidate__zone',)
+    list_display = ('candidate', 'age', 'degree',)
+    list_filter = ('field', 'degree', 'candidate__zone',)
     search_fields = ['candidate__full_name', 'candidate__code']
     fieldsets = (
         (None, {
             'fields': (
-                ('candidate', 'age', 'birth_locate', 'degree', 'field'), ('biography', 'records'), 'banner1')
+                ('candidate', 'age', 'degree', 'field'), ('moarefi_barnameha', 'records'), 'banner1')
         }),
         ('پوسترهای بیشتر', {
             'classes': ('collapse',),
