@@ -10,12 +10,12 @@
 }
 
 @media only screen and (max-width: 1200px) {
-    .right-sidebar {
+    /* .right-sidebar {
         display: none;
     }
     .left-sidebar {
         display: none;
-    }
+    } */
     .main-body {
         display: grid;
         grid-template-columns: auto;
@@ -30,7 +30,6 @@
         text-align: right;
     }
     .profile-picture {
-        margin: auto;
         text-align: center;
         margin: 1rem 0rem;
     }
@@ -205,7 +204,7 @@ button.navbar-toggler.collapsed {
 
 .main-body {
     display: grid;
-    grid-template-columns: 20% 60% 20%;
+    grid-template-columns: 10% 80% 10%;
     grid-template-rows: auto;
     padding: 10px;
 }
@@ -213,7 +212,7 @@ button.navbar-toggler.collapsed {
 .Main-content {
     margin-top: 3rem;
     display: grid;
-    grid-template-columns: 35% 65%;
+    grid-template-columns: 25% 75%;
     grid-template-rows: auto;
     text-align: right;
 }
