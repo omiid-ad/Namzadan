@@ -25,7 +25,7 @@ SECRET_KEY = '%$11^aq4@5hjvsfne-u%(=mk=fr%fsumejlh$)ox*!6#ay!ixl'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['namzadan.ir', '127.0.0.1']
+ALLOWED_HOSTS = ['www.namzadan.ir','namzadan.ir', '127.0.0.1']
 
 
 # Application definition
@@ -124,8 +124,8 @@ USE_TZ = True
 PROJECT_ROOT = os.path.join(os.path.dirname(__file__), '..')
 SITE_ROOT = PROJECT_ROOT
 
-MEDIA_ROOT = os.path.join(SITE_ROOT, 'media')
+MEDIA_ROOT = '/home2/namzadan/public_html/media'
 MEDIA_URL = '/media/'
 
-STATIC_ROOT = os.path.join(SITE_ROOT, 'static')
+STATIC_ROOT = '/home2/namzadan/public_html/static'
 STATIC_URL = '/static/'
