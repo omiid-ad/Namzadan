@@ -25,13 +25,21 @@
     .Main-content {
         margin-top: 3rem;
         display: grid;
-        grid-template-columns: auto;
+        grid-template-columns: 100% !important;
         grid-template-rows: auto;
         text-align: right;
     }
     .profile-picture {
+        margin: auto;
         text-align: center;
         margin: 1rem 0rem;
+    }
+    .slugan {
+        display: none;
+    }
+    .griding-div {
+        display: grid;
+        grid-template-columns: 100%;
     }
 }
 
@@ -266,6 +274,7 @@ button.navbar-toggler.collapsed {
 }
 
 .jumbotron.jumbotron-fluid {
+    background: white;
     border: 1px solid green;
     border-radius: 15px;
 }
@@ -288,9 +297,10 @@ h3.Aboutustitle {
     align-items: center !important;
 }
 
-.candidates {
+
+/* .candidates {
     display: flex;
-}
+} */
 
 .griding-div {
     display: grid;
