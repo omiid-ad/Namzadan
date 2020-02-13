@@ -10,7 +10,7 @@ class Province(models.Model):
 
 class City(models.Model):
     province = models.ForeignKey(Province, on_delete=models.CASCADE, verbose_name="استان مربوطه")
-    name = models.CharField(max_length=50, verbose_name="نام شهر")
+    name = models.CharField(max_length=50,unique=True, verbose_name="نام شهر")
 
     def __str__(self):
         return self.name + " - " + self.province.name
@@ -18,7 +18,7 @@ class City(models.Model):
 
 class Zone(models.Model):
     city = models.ForeignKey(City, on_delete=models.CASCADE, verbose_name="شهر مربوطه")
-    name = models.CharField(max_length=20, verbose_name="نام یا کد ناحیه")
+    name = models.CharField(max_length=20,unique=True, verbose_name="نام یا کد ناحیه")
 
     def __str__(self):
         return self.name + " - " + self.city.name
