@@ -18,7 +18,7 @@ class City(models.Model):
 
 class Zone(models.Model):
     city = models.ForeignKey(City, on_delete=models.CASCADE, verbose_name="شهر مربوطه")
-    name = models.CharField(max_length=20,unique=True, verbose_name="نام یا کد ناحیه")
+    name = models.CharField(max_length=20, verbose_name="نام یا کد ناحیه")
 
     def __str__(self):
         return self.name + " - " + self.city.name
