@@ -10,12 +10,12 @@
 }
 
 @media only screen and (max-width: 1200px) {
-    /* .right-sidebar {
+    .right-sidebar {
         display: none;
     }
     .left-sidebar {
         display: none;
-    } */
+    }
     .candidates {
         display: flex;
         justify-content: center;

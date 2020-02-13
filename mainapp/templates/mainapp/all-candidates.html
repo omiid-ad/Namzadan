@@ -54,6 +54,7 @@
             {% csrf_token %}
             <div class="form-row">
                 <div class="form-group col-md-3 ">
+                    <label for="">استان</label>
                     <select name="province" id="inputState" class="form-control">
                     <option value="none" selected>استان</option>
                     {% if all_provinces %}
@@ -64,6 +65,7 @@
                 </select>
                 </div>
                 <div class="form-group col-md-3">
+                    <label for="">حوزه</label>
                     <select name="zone" id="inputState" class="form-control">
                     <option value="none" selected>حوزه انتخاباتی</option>
                     {% if all_zones %}
