@@ -9,7 +9,7 @@ from .models import Candidate, City, Resume, Province
 
 
 def home(request):
-    all_candidates = Candidate.objects.filter(zone__city__province__name__exact="تهران")
+    all_candidates = Candidate.objects.filter(city__province__name__exact="تهران")
     all_provinces = Province.objects.all().order_by('name')
     all_zones = City.objects.all().order_by('name')
     MEDIA_URL = settings.MEDIA_URL
