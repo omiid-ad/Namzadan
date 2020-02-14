@@ -5,12 +5,12 @@ from .models import *
 
 
 class CandidateA(admin.ModelAdmin):
-    list_display = ('full_name', 'code', 'party', 'zone')
-    list_filter = ('zone', 'party',)
+    list_display = ('full_name', 'code', 'party', 'city')
+    list_filter = ('city', 'party',)
     search_fields = ['code', 'full_name']
     fieldsets = (
         (None, {
-            'fields': (('full_name', 'father_name', 'code', 'party', 'zone'), 'profile_picture_url')
+            'fields': (('full_name', 'father_name', 'code', 'party', 'city'), 'profile_picture_url')
         }),
         ('اطلاعات بیشتر', {
             'classes': ('collapse',),
@@ -39,7 +39,7 @@ class CityA(admin.ModelAdmin):
 
 class ResumeA(admin.ModelAdmin):
     list_display = ('candidate', 'age', 'degree',)
-    list_filter = ('field', 'degree', 'candidate__zone',)
+    list_filter = ('field', 'degree', 'candidate__city',)
     search_fields = ['candidate__full_name', 'candidate__code']
     fieldsets = (
         (None, {
