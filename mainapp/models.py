@@ -16,12 +16,12 @@ class City(models.Model):
         return self.name + " - " + self.province.name
 
 
-class Zone(models.Model):
-    city = models.ForeignKey(City, on_delete=models.CASCADE, verbose_name="شهر مربوطه")
-    name = models.CharField(max_length=20, verbose_name="نام یا کد ناحیه")
+# class Zone(models.Model):
+#     city = models.ForeignKey(City, on_delete=models.CASCADE, verbose_name="شهر مربوطه")
+#     name = models.CharField(max_length=20, verbose_name="نام یا کد ناحیه")
 
-    def __str__(self):
-        return self.name + " - " + self.city.name
+#     def __str__(self):
+#         return self.name + " - " + self.city.name
 
 
 class Candidate(models.Model):
@@ -45,14 +45,15 @@ class Candidate(models.Model):
     code = models.CharField(max_length=10, unique=True, verbose_name="کد انتخاباتی")
     motto = models.TextField(blank=True, verbose_name="شعار انتخاباتی")
     party = models.CharField(max_length=25, choices=PARTIES, default=UNKNOWN, verbose_name="حزب")
-    zone = models.ForeignKey(Zone, on_delete=models.CASCADE, verbose_name="ناحیه", default=None)
+    # zone = models.ForeignKey(Zone, on_delete=models.CASCADE, verbose_name="ناحیه", default=None)
+    city = models.ForeignKey(City, on_delete=models.CASCADE, verbose_name="ناحیه انتخاباتی", default=None)
 
     def __str__(self):
         return self.full_name + " - " + self.code
 
     def save(self, *args, **kwargs):
         if not self.profile_picture_url or self.profile_picture_url is None:
-            self.profile_picture_url = "pps/default.png"
+            self.profile_picture_url = "media/images/default.png"
         super().save()
 
 

@@ -4,7 +4,7 @@ from .models import Candidate
 
 def save_candidate(sender, instance, **kwargs):
     if not sender.profile_picture_url or sender.profile_picture_url is None:
-        sender.profile_picture_url = "pps/default.png"
+        sender.profile_picture_url = "media/images/default.png"
     instance.save()
 
 

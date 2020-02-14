@@ -5,13 +5,13 @@ from django.db.models import Q
 from django.core.paginator import Paginator
 from Namzadan import settings
 
-from .models import Candidate, City, Zone, Resume, Province
+from .models import Candidate, City, Resume, Province
 
 
 def home(request):
     all_candidates = Candidate.objects.filter(zone__city__province__name__exact="تهران")
     all_provinces = Province.objects.all().order_by('name')
-    all_zones = Zone.objects.all().order_by('city__name')
+    all_zones = City.objects.all().order_by('name')
     MEDIA_URL = settings.MEDIA_URL
     paginator = Paginator(all_candidates, 12)
     page_number = request.GET.get('page')
@@ -27,7 +27,7 @@ def home(request):
                 Q(full_name__contains=search_text) | Q(nickname__contains=search_text) |
                 Q(father_name__contains=search_text) | Q(code__contains=search_text) |
                 Q(party__contains=search_text) |
-                Q(zone__city__name__contains=search_text))
+                Q(city__name__contains=search_text))
             paginator = Paginator(all_candidates, 12)
             page_number = request.GET.get('page')
             page_obj = paginator.get_page(page_number)
@@ -45,7 +45,7 @@ def home(request):
                                'page_obj': page_obj})
         if province_pk == "none":
             if zone_pk != "none":
-                all_candidates = Candidate.objects.filter(zone_id=zone_pk)
+                all_candidates = Candidate.objects.filter(city_id=zone_pk)
                 paginator = Paginator(all_candidates, 12)
                 page_number = request.GET.get('page')
                 page_obj = paginator.get_page(page_number)
@@ -55,7 +55,7 @@ def home(request):
                                'page_obj': page_obj})
         if province_pk != "none":
             if zone_pk == "none":
-                all_candidates = Candidate.objects.filter(zone__city__province_id=province_pk)
+                all_candidates = Candidate.objects.filter(city__province_id=province_pk)
                 paginator = Paginator(all_candidates, 12)
                 page_number = request.GET.get('page')
                 page_obj = paginator.get_page(page_number)
@@ -65,7 +65,7 @@ def home(request):
                                'page_obj': page_obj})
         if province_pk != "none":
             if zone_pk != "none":
-                all_candidates = Candidate.objects.filter(zone__city__province_id=province_pk, zone_id=zone_pk)
+                all_candidates = Candidate.objects.filter(city__province_id=province_pk, city_id=zone_pk)
                 paginator = Paginator(all_candidates, 12)
                 page_number = request.GET.get('page')
                 page_obj = paginator.get_page(page_number)

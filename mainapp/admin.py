@@ -32,9 +32,9 @@ class CityA(admin.ModelAdmin):
     list_filter = ('province',)
 
 
-class ZoneA(admin.ModelAdmin):
-    list_display = ('name', 'city',)
-    list_filter = ('city',)
+# class ZoneA(admin.ModelAdmin):
+#     list_display = ('name', 'city',)
+#     list_filter = ('city',)
 
 
 class ResumeA(admin.ModelAdmin):
@@ -60,6 +60,6 @@ admin.site.register(Candidate, CandidateA)
 admin.site.register(Resume, ResumeA)
 admin.site.register(Province, ProvinceA)
 admin.site.register(City, CityA)
-admin.site.register(Zone, ZoneA)
+# admin.site.register(Zone, ZoneA)
 
 admin.site.site_header = "نامزدان دات آی آر"

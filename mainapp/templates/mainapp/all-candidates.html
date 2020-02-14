@@ -74,12 +74,12 @@
                 </select>
                 </div>
                 <div class="form-group col-md-3">
-                    <label for="">حوزه</label>
+                    <label for=""> حوزه انتخاباتی</label>
                     <select name="zone" id="inputState" class="form-control">
                     <option value="none" selected>حوزه انتخاباتی</option>
                     {% if all_zones %}
                         {% for z in all_zones %}
-                            <option value="{{ z.pk }}">{{ z.name }} - {{ z.city.name }}</option>
+                            <option value="{{ z.pk }}">{{ z.name }}</option>
                         {% endfor %}
                     {% endif %}
                 </select>
@@ -119,7 +119,7 @@
                         <figcaption>
                             <img src="{{ MEDIA_URL }}{{ cn.profile_picture_url }}" alt="تصویر نمایه" class="profile">
                             <h5 class="CadidateName"> {{ cn.full_name }} </h5>
-                            <h6 class="CandidateCity"> {{ cn.zone.city.name }}</h6>
+                            <h6 class="CandidateCity"> {{ cn.city.name }}</h6>
                             <span class="badge">کد نامزد : {{ cn.code }}</span>
                             <li class="morebtn">
                                 <a class="btn btn-success" href="{% url 'resume' cn.pk %}">مشاهده ی رزومه</a>
