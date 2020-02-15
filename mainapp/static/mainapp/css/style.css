@@ -10,12 +10,12 @@
 }
 
 @media only screen and (max-width: 1200px) {
-    .right-sidebar {
+    /* .right-sidebar {
         display: none;
     }
     .left-sidebar {
         display: none;
-    }
+    } */
     .candidates {
         display: flex;
         justify-content: center;
@@ -43,7 +43,7 @@
     }
     .griding-div {
         display: grid;
-        grid-template-columns: 100%;
+        grid-template-columns: 1fr;
     }
 }
 
