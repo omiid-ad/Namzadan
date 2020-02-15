@@ -13,7 +13,7 @@ def home(request):
     all_provinces = Province.objects.all().order_by('name')
     all_zones = City.objects.all().order_by('name')
     MEDIA_URL = settings.MEDIA_URL
-    paginator = Paginator(all_candidates, 12)
+    paginator = Paginator(all_candidates, 90)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     if request.method == 'GET':
@@ -28,7 +28,7 @@ def home(request):
                 Q(father_name__contains=search_text) | Q(code__contains=search_text) |
                 Q(party__contains=search_text) |
                 Q(city__name__contains=search_text)).order_by('full_name')
-            paginator = Paginator(all_candidates, 12)
+            paginator = Paginator(all_candidates, 90)
             page_number = request.GET.get('page')
             page_obj = paginator.get_page(page_number)
             return render(request, 'mainapp/all-candidates.html',
@@ -46,7 +46,7 @@ def home(request):
         if province_pk == "none":
             if zone_pk != "none":
                 all_candidates = Candidate.objects.filter(city_id=zone_pk).order_by('full_name')
-                paginator = Paginator(all_candidates, 12)
+                paginator = Paginator(all_candidates, 90)
                 page_number = request.GET.get('page')
                 page_obj = paginator.get_page(page_number)
                 return render(request, 'mainapp/all-candidates.html',
@@ -56,7 +56,7 @@ def home(request):
         if province_pk != "none":
             if zone_pk == "none":
                 all_candidates = Candidate.objects.filter(city__province_id=province_pk).order_by('full_name')
-                paginator = Paginator(all_candidates, 12)
+                paginator = Paginator(all_candidates, 90)
                 page_number = request.GET.get('page')
                 page_obj = paginator.get_page(page_number)
                 return render(request, 'mainapp/all-candidates.html',
@@ -67,7 +67,7 @@ def home(request):
             if zone_pk != "none":
                 all_candidates = Candidate.objects.filter(city__province_id=province_pk, city_id=zone_pk).order_by(
                     'full_name')
-                paginator = Paginator(all_candidates, 12)
+                paginator = Paginator(all_candidates, 90)
                 page_number = request.GET.get('page')
                 page_obj = paginator.get_page(page_number)
                 return render(request, 'mainapp/all-candidates.html',
