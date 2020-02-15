@@ -357,3 +357,12 @@ label {
     border: 1px solid transparent !important;
     border-radius: .25rem !important;
 }
+
+.row {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-right: 0 !important;
+    margin-left: 0 !important;
+}
