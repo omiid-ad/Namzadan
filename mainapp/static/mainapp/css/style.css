@@ -346,14 +346,14 @@ label {
     justify-content: center;
 }
 
-.alert.alert-success {
-    text-align: center;
+.alert.alert-dark {
+    text-align: center !important;
 }
 
 .alert {
-    position: relative;
-    padding: .75rem 1.25rem;
-    margin-bottom: 0rem;
-    border: 1px solid transparent;
-    border-radius: .25rem;
+    position: relative !important;
+    padding: .75rem 1.25rem!important;
+    margin-bottom: 0rem !important;
+    border: 1px solid transparent !important;
+    border-radius: .25rem !important;
 }
