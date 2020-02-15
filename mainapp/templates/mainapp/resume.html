@@ -58,7 +58,9 @@
                     <li class="list-group-item"><label for="">نام و نام خانوادگی : {{ resume.candidate.full_name }}</label>
                     </li>
                     <li class="list-group-item">سن : {{ resume.age }} سال</li>
+                    {% if resume.candidate.father_name %}
                     <li class="list-group-item">فرزند : {{ resume.candidate.father_name }}</li>
+                    {% endif %}
                     <li class="list-group-item">حوزه انتخابیه: {{ resume.candidate.zone.city.name }} {{ resume.candidate.zone.name }}</li>
                     <!-- <li class="list-group-item">محل تولد : {{ resume.birth_locate }}</li> -->
                     <!-- <li class="list-group-item">رشته تحصیلی : {{ resume.field }}</li> -->

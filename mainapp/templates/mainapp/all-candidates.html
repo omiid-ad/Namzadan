@@ -120,7 +120,9 @@
                             <img src="{{ MEDIA_URL }}{{ cn.profile_picture_url }}" alt="تصویر نمایه" class="profile">
                             <h5 class="CadidateName"> {{ cn.full_name }} </h5>
                             <h6 class="CandidateCity"> {{ cn.city.name }}</h6>
+                            {% if cn.code %}
                             <span class="badge">کد نامزد : {{ cn.code }}</span>
+                            {% endif %}
                             <li class="morebtn">
                                 <a class="btn btn-success" href="{% url 'resume' cn.pk %}">مشاهده ی رزومه</a>
                             </li>
