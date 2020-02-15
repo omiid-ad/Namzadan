@@ -121,8 +121,7 @@
                             <h5 class="CadidateName"> {{ cn.full_name }} </h5>
                             <h6 class="CandidateCity"> {{ cn.city.name }}</h6>
                             {% if cn.code %}
-                            <span class="badge">کد نامزد : {{ cn.code }}</span>
-                            {% endif %}
+                            <span class="badge">کد نامزد : {{ cn.code }}</span> {% endif %}
                             <li class="morebtn">
                                 <a class="btn btn-success" href="{% url 'resume' cn.pk %}">مشاهده ی رزومه</a>
                             </li>
@@ -158,6 +157,11 @@
     <script src="https://netdna.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script type="text/javascript">
     </script>
+    <footer>
+        <div class="alert alert-success" role="alert">
+            .کلیه حقوق مادی و معندی این سایت متعلق به شرکت ایده پردازان رایان نیرو می باشد
+        </div>
+    </footer>
 </body>
 
 </html>
