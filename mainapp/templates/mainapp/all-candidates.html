@@ -14,49 +14,48 @@
 </head>
 
 <body>
-<div class="desc-title">
+    <div class="desc-title">
         <span>
             <p class="textnav">انتخاب آگاهانه</p>
             <p class="textnav">حفظ زیبایی</p>
             <p class="textnav">تبلیغات ماندگار</p>
         </span>
-    <span class="slugan">معرفی نامزدهای انتخابات یازدهمین دوره مجلس شورای اسلامی</span>
+        <span class="slugan">معرفی نامزدهای انتخابات یازدهمین دوره مجلس شورای اسلامی</span>
 
-</div>
-<!-- Nav -->
+    </div>
+    <!-- Nav -->
 
-<nav class="navbar navbar-expand-lg navigationbar">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <nav class="navbar navbar-expand-lg navigationbar">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'home' %}">مشاهده نامزدها</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'contact_us' %}">تماس با ما</a>
-            </li>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'home' %}">مشاهده نامزدها</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'contact_us' %}">تماس با ما</a>
+                </li>
 
-        </ul>
-    </div>
-    <div>
-        <form class="form-inline" method="post" action="{% url 'home' %}">
+            </ul>
+        </div>
+        <div>
+            <form class="form-inline" method="post" action="{% url 'home' %}">
+                {% csrf_token %}
+                <input name="search" class="form-control mr-sm-2" type="search" placeholder="جستجو" aria-label="Search">
+                <button class="btn btn-outline-dark my-2 my-sm-0 Searchbutton" type="submit">جستجو</button>
+            </form>
+        </div>
+    </nav>
+    <!-- /nav -->
+    <div class="filters">
+        <form method="post" action="{% url 'home' %}">
             {% csrf_token %}
-            <input name="search" class="form-control mr-sm-2" type="search" placeholder="جستجو" aria-label="Search">
-            <button class="btn btn-outline-dark my-2 my-sm-0 Searchbutton" type="submit">جستجو</button>
-        </form>
-    </div>
-</nav>
-<!-- /nav -->
-<div class="filters">
-    <form method="post" action="{% url 'home' %}">
-        {% csrf_token %}
-        <div class="form-row">
-            <div class="form-group col-md-3 ">
-                <label for="">استان</label>
-                <select name="province" id="inputProvince" class="form-control">
+            <div class="form-row">
+                <div class="form-group col-md-3 ">
+                    <label for="">استان</label>
+                    <select name="province" id="inputProvince" class="form-control">
                     {% if all_provinces %}
                         <option value="none">استان</option>
                         {% for p in all_provinces %}
@@ -68,43 +67,43 @@
                         {% endfor %}
                     {% endif %}
                 </select>
-            </div>
-            <div class="form-group col-md-3">
-                <label for=""> حوزه </label>
-                <select name="zone" id="inputState" class="form-control">
+                </div>
+                <div class="form-group col-md-3">
+                    <label for=""> حوزه </label>
+                    <select name="zone" id="inputState" class="form-control">
                     <option value="none" selected="">حوزه انتخاباتی</option>
                 </select>
+                </div>
+                <div class="col-md-4 searchbtn">
+                    <button type="submit" class="btn btn-success">اعمال فیلترها</button>
+                </div>
             </div>
-            <div class="col-md-4 searchbtn">
-                <button type="submit" class="btn btn-success">اعمال فیلترها</button>
-            </div>
-        </div>
-    </form>
+        </form>
 
 
-</div>
-<div class="page-container">
-    <div class="alert-danger error-msg">
-        {% if messages %}
+    </div>
+    <div class="page-container">
+        <div class="alert-danger error-msg">
+            {% if messages %}
             <ul class="messages">
                 {% for message in messages %}
-                    <li{% if message.tags %} class="alert {{ message.tags }}" {% endif %}>{{ message }}</li>
-                {% endfor %}
+                <li{% if message.tags %} class="alert {{ message.tags }}" {% endif %}>{{ message }}</li>
+                    {% endfor %}
             </ul>
-        {% endif %}
-    </div>
-
-    <div class="griding-div">
-        <div class="left-sidebar">
-            <img class="side-posters" src="https://namzadan.ir/media/banners/default.jpg" alt="بنر۱">
-            <img class="side-posters" src="https://namzadan.ir/media/banners/default.jpg" alt="بنر۲">
-            <img class="side-posters" src="https://namzadan.ir/media/banners/default.jpg" alt="بنر۳">
-            <img class="side-posters" src="https://namzadan.ir/media/banners/default.jpg" alt="بنر۴">
-
+            {% endif %}
         </div>
-        <div class="row candidates">
-            <!-- Candidates -->
-            {% if page_obj %} {% for cn in page_obj %}
+
+        <div class="griding-div">
+            <div class="left-sidebar">
+                <img class="side-posters" src="https://namzadan.ir/media/banners/default.jpg" alt="بنر۱">
+                <img class="side-posters" src="https://namzadan.ir/media/banners/default.jpg" alt="بنر۲">
+                <img class="side-posters" src="https://namzadan.ir/media/banners/default.jpg" alt="بنر۳">
+                <img class="side-posters" src="https://namzadan.ir/media/banners/default.jpg" alt="بنر۴">
+
+            </div>
+            <div class="row candidates">
+                <!-- Candidates -->
+                {% if page_obj %} {% for cn in page_obj %}
                 <div class="col-md-4">
                     <figure class="user-card green">
                         <figcaption>
@@ -112,61 +111,61 @@
                             <h5 class="CadidateName"> {{ cn.full_name }} </h5>
                             <h6 class="CandidateCity"> {{ cn.city.name }}</h6>
                             {% if cn.code %}
-                                <span class="badge">کد نامزد : {{ cn.code }}</span> {% endif %}
+                            <span class="badge">کد نامزد : {{ cn.code }}</span> {% endif %}
                             <li class="morebtn">
                                 <a class="btn btn-success" href="{% url 'resume' cn.pk %}">مشاهده ی رزومه</a>
                             </li>
                         </figcaption>
                     </figure>
                 </div>
-            {% endfor %} {% endif %}
+                {% endfor %} {% endif %}
 
+            </div>
+            <div class="right-sidebar">
+                <img class="side-posters" src="https://namzadan.ir/media/banners/default_PTRwFVr.jpg" alt="بنر۱">
+                <img class="side-posters" src="https://namzadan.ir/media/banners/default_PTRwFVr.jpg" alt="بنر۲">
+                <img class="side-posters" src="https://namzadan.ir/media/banners/default_PTRwFVr.jpg" alt="بنر۳">
+                <img class="side-posters" src="https://namzadan.ir/media/banners/default_PTRwFVr.jpg" alt="بنر۴">
+            </div>
         </div>
-        <div class="right-sidebar">
-            <img class="side-posters" src="https://namzadan.ir/media/banners/default_PTRwFVr.jpg" alt="بنر۱">
-            <img class="side-posters" src="https://namzadan.ir/media/banners/default_PTRwFVr.jpg" alt="بنر۲">
-            <img class="side-posters" src="https://namzadan.ir/media/banners/default_PTRwFVr.jpg" alt="بنر۳">
-            <img class="side-posters" src="https://namzadan.ir/media/banners/default_PTRwFVr.jpg" alt="بنر۴">
-        </div>
-    </div>
-    <div class="downpage-Pagination">
-        <nav aria-label="Page navigation example">
-            {% if page_obj.has_previous %}
+        <div class="downpage-Pagination">
+            <nav aria-label="Page navigation example">
+                {% if page_obj.has_previous %}
                 <a class="page-item" href="?page=1">&laquo; نخست</a>
                 <a href="?page={{ page_obj.previous_page_number }}">قبلی</a> {% endif %}
 
-            <span class="current">
+                <span class="current">
         صفحه {{ page_obj.number }} از {{ page_obj.paginator.num_pages }}.
     </span> {% if page_obj.has_next %}
-            <a class="page-item" href="?page={{ page_obj.next_page_number }}">بعدی</a>
-            <a href="?page={{ page_obj.paginator.num_pages }}">آخرین &raquo;</a> {% endif %}
-        </nav>
+                <a class="page-item" href="?page={{ page_obj.next_page_number }}">بعدی</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}">آخرین &raquo;</a> {% endif %}
+            </nav>
+        </div>
     </div>
-</div>
-<script>
-    function removeOptions(selectbox) {
-        var i;
-        for (i = selectbox.options.length - 1; i >= 0; i--) {
-            selectbox.remove(i);
-        }
-    }
-
-    $(document).ready(function () {
-        $('#inputProvince').click(function () {
-            var province_id = $(this).val();
-            if (province_id === 'none') {
-                removeOptions(document.getElementById("inputState"));
-                $('#inputState').append($('<option>').text("ابتدا استان را انتخاب کنید").attr('value', 'none'));
+    <script>
+        function removeOptions(selectbox) {
+            var i;
+            for (i = selectbox.options.length - 1; i >= 0; i--) {
+                selectbox.remove(i);
             }
-            if (province_id !== "none") {
-                $.ajax(
-                    {
-                        url: '{% url 'get_cities' %}',
+        }
+
+        $(document).ready(function() {
+            $('#inputProvince').click(function() {
+                var province_id = $(this).val();
+                if (province_id === 'none') {
+                    removeOptions(document.getElementById("inputState"));
+                    $('#inputState').append($('<option>').text("ابتدا استان را انتخاب کنید").attr('value', 'none'));
+                }
+                if (province_id !== "none") {
+                    $.ajax({
+                        url: '{% url '
+                        get_cities ' %}',
                         data: {
                             'province_id': province_id
                         },
                         dataType: 'json',
-                        success: function (data) {
+                        success: function(data) {
                             if (data.status === 200) {
                                 var city = data.city_json;
                                 var obj = JSON.parse(city);
@@ -176,23 +175,21 @@
                                 }
                             }
                         }
-                    }
-                )
-            }
+                    })
+                }
+            });
         });
-    });
-
-</script>
+    </script>
 
 
-<script src="https://netdna.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script type="text/javascript">
-</script>
-<footer>
-    <div class="alert alert-dark" role="alert">
-        .کلیه حقوق مادی و معنوی این سایت متعلق به شرکت ایده پردازان رایان نیرو می باشد
-    </div>
-</footer>
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+    </script>
+    <footer>
+        <div class="alert alert-dark" role="alert">
+            .کلیه حقوق مادی و معنوی این سایت متعلق به شرکت ایده پردازان رایان نیرو می باشد
+        </div>
+    </footer>
 </body>
 
 </html>
