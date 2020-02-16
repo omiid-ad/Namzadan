@@ -1,4 +1,7 @@
+import json
+
 from django.contrib import messages
+from django.core import serializers
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.db.models import Q
@@ -90,3 +93,17 @@ def resume(request, pk):
         messages.error(request, "رزومه ای برای کاندیدای مورد نظر یافت نشد")
         return redirect('home')
     return render(request, 'mainapp/resume.html', {'resume': resume, 'MEDIA_URL': MEDIA_URL})
+
+
+def get_cities(request):
+    province_id = int(request.GET.get('province_id', None))
+    cities = City.objects.filter(province_id=province_id).order_by('name')
+
+    city_json = serializers.serialize('json', cities, fields=('name', 'pk'))
+
+    data = {
+        'city_json': city_json,
+        'status': 200
+    }
+    from django.http import JsonResponse
+    return JsonResponse(data)
