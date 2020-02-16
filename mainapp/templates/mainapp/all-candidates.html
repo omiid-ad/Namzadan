@@ -160,7 +160,7 @@
             }
             if (province_id !== "none") {
                 $.ajax({
-                    url: '{% url 'get_cities' %}',
+                    url: '{% url 'get_cities' %}' ,
                     data: {
                         'province_id': province_id
                     },
