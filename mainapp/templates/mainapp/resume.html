@@ -13,90 +13,97 @@
 </head>
 
 <body>
-    <div class="desc-title">
+<div class="desc-title">
         <span>
             <p class="textnav">انتخاب آگاهانه</p>
             <p class="textnav">حفظ زیبایی</p>
             <p class="textnav">تبلیغات ماندگار</p>
         </span>
-        <span class="slugan">معرفی نامزدهای انتخابات یازدهمین دوره مجلس شورای اسلامی</span>
+    <span class="slugan">معرفی نامزدهای انتخابات یازدهمین دوره مجلس شورای اسلامی</span>
 
-    </div>
-    <nav class="navbar navbar-expand-lg navigationbar">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" role="img" focusable="false"><title>Menu</title><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg>
+</div>
+<nav class="navbar navbar-expand-lg navigationbar">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" role="img" focusable="false">
+            <title>Menu</title>
+            <path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"
+                  d="M4 7h22M4 15h22M4 23h22"></path>
+        </svg>
     </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'home' %}">مشاهده نامزدها</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'contact_us' %}">تماس با ما</a>
-                </li>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'home' %}">مشاهده نامزدها</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'contact_us' %}">تماس با ما</a>
+            </li>
 
-            </ul>
+        </ul>
+    </div>
+    <div>
+        <form class="form-inline" method="post" action="{% url 'home' %}">
+            {% csrf_token %}
+            <input name="search" class="form-control mr-sm-2" type="search" placeholder="جستجو" aria-label="Search">
+            <button class="btn btn-outline-dark my-2 my-sm-0 Searchbutton" type="submit">جستجو</button>
+        </form>
+    </div>
+</nav>
+<div class="container">
+
+
+    <div class="Main-content">
+        <div class="profile-picture">
+            <img src="{{ MEDIA_URL }}{{ resume.candidate.profile_picture_url }}" alt="" height="350" width="310">
         </div>
-        <div>
-            <form class="form-inline" method="post" action="{% url 'home' %}">
-                {% csrf_token %}
-                <input name="search" class="form-control mr-sm-2" type="search" placeholder="جستجو" aria-label="Search">
-                <button class="btn btn-outline-dark my-2 my-sm-0 Searchbutton" type="submit">جستجو</button>
-            </form>
-        </div>
-    </nav>
-    <div class="container">
-
-
-
-        <div class="Main-content">
-            <div class="profile-picture">
-                <img src="{{ MEDIA_URL }}{{ resume.candidate.profile_picture_url }}" alt="" height="350" width="310">
-            </div>
-            <div class="basic-info">
-                <ul class="list-group">
-                    <li class="list-group-item"><label for="">نام و نام خانوادگی : {{ resume.candidate.full_name }}</label>
-                    </li>
-                    <li class="list-group-item">سن : {{ resume.age }} سال</li>
-                    {% if resume.candidate.father_name %}
+        <div class="basic-info">
+            <ul class="list-group">
+                <li class="list-group-item"><label for="">نام و نام خانوادگی : {{ resume.candidate.full_name }}</label>
+                </li>
+                <li class="list-group-item">سن : {{ resume.age }} سال</li>
+                {% if resume.candidate.father_name %}
                     <li class="list-group-item">فرزند : {{ resume.candidate.father_name }}</li>
-                    {% endif %}
-                    <li class="list-group-item">حوزه انتخابیه: {{ resume.candidate.zone.city.name }} {{ resume.candidate.zone.name }}</li>
-                    <!-- <li class="list-group-item">محل تولد : {{ resume.birth_locate }}</li> -->
-                    <!-- <li class="list-group-item">رشته تحصیلی : {{ resume.field }}</li> -->
-                    <li class="list-group-item">مدرک و رشته تحصیلی : {{ resume.get_degree_display }} {{ resume.field }}</li>
-                    <li class="list-group-item">شعار انتخاباتی : {{ resume.candidate.motto }} </li>
-                    <li class="list-group-item">گرایش سیاسی : {{ resume.candidate.get_party_display }}</li>
-
-                </ul>
-            </div>
-        </div>
-
-        <div class="jumbotron Past-Activities ">
-            <ul class="list-unstyled">
-                <li class="media">
-                    <div class="media-body">
-                        <h5 class="mt-0 mb-1 Resumetitle"> معرفی برنامه ها</h5>
-                        {{ resume.moarefi_barnameha }}
-                        <h5 class="mt-0 mb-1 biographytitle"> سوابق مدیریتی</h5>
-                        {{ resume.records }}
-                    </div>
-                </li>
+                {% endif %}
+                {% if resume.candidate.nickname %}
+                    <li class="list-group-item">مشهور به : {{ resume.candidate.nickname }}</li>
+                {% endif %}
+                <li class="list-group-item">حوزه
+                    انتخابیه: {{ resume.candidate.city.name }} - {{ resume.candidate.city.province.name }}</li>
+                <!-- <li class="list-group-item">محل تولد : {{ resume.birth_locate }}</li> -->
+                <!-- <li class="list-group-item">رشته تحصیلی : {{ resume.field }}</li> -->
+                <li class="list-group-item">مدرک و رشته تحصیلی : {{ resume.get_degree_display }} {{ resume.field }}</li>
+                <li class="list-group-item">شعار انتخاباتی : {{ resume.candidate.motto }} </li>
+                <li class="list-group-item">گرایش سیاسی : {{ resume.candidate.get_party_display }}</li>
 
             </ul>
         </div>
+    </div>
 
+    <div class="jumbotron Past-Activities ">
+        <ul class="list-unstyled">
+            <li class="media">
+                <div class="media-body">
+                    <h5 class="mt-0 mb-1 Resumetitle"> معرفی برنامه ها</h5>
+                    {{ resume.moarefi_barnameha }}
+                    <h5 class="mt-0 mb-1 biographytitle"> سوابق مدیریتی</h5>
+                    {{ resume.records }}
+                </div>
+            </li>
 
-
+        </ul>
     </div>
 
 
-    <script src="https://netdna.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-    <footer>
-        <div class="alert alert-dark" role="alert">
-            .کلیه حقوق مادی و معنوی این سایت متعلق به شرکت ایده پردازان رایان نیرو می باشد
-        </div>
-    </footer>
+</div>
+
+
+<script src="https://netdna.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<footer>
+    <div class="alert alert-dark" role="alert">
+        .کلیه حقوق مادی و معنوی این سایت متعلق به شرکت ایده پردازان رایان نیرو می باشد
+    </div>
+</footer>
 </body>
 
 </html>
