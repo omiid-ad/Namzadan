@@ -112,7 +112,14 @@
                             <h5 class="CadidateName"> {{ cn.full_name }} </h5>
                             <h6 class="CandidateCity"> {{ cn.city.name }}</h6>
                             {% if cn.code %}
-                                <span class="badge">کد نامزد : {{ cn.code }}</span> {% endif %}
+                                <span class="badge">کد نامزد : {{ cn.code }}</span>
+                            {% endif %}
+                            {% if cn.father_name %}
+                                <span class="badge">فرزند : {{ cn.father_name }}</span>
+                            {% endif %}
+                            {% if cn.nickname %}
+                                <span class="badge">مشهور به : {{ cn.nickname }}</span>
+                            {% endif %}
                             <li class="morebtn">
                                 <a class="btn btn-success" href="{% url 'resume' cn.pk %}">مشاهده ی رزومه</a>
                             </li>
@@ -160,7 +167,7 @@
             }
             if (province_id !== "none") {
                 $.ajax({
-                    url: '{% url 'get_cities' %}' ,
+                    url: '{% url 'get_cities' %}',
                     data: {
                         'province_id': province_id
                     },
