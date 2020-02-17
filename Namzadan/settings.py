@@ -22,7 +22,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '%$11^aq4@5hjvsfne-u%(=mk=fr%fsumejlh$)ox*!6#ay!ixl'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['www.namzadan.ir', 'namzadan.ir', '127.0.0.1']
 
@@ -76,7 +76,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'OPTIONS': {
-            'read_default_file': '/home/mr_aki/PycharmProjects/Namzadan/NamzadanDB.cnf',
+            'read_default_file': 'NamzadanDB.cnf',
         },
     }
 }
@@ -118,10 +118,10 @@ USE_TZ = True
 PROJECT_ROOT = os.path.join(os.path.dirname(__file__), '..')
 SITE_ROOT = PROJECT_ROOT
 
-# MEDIA_ROOT = '/home2/namzadan/public_html/media
-MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'media')
+MEDIA_ROOT = '/home2/namzadan/public_html/media'
+# MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'media')
 MEDIA_URL = '/media/'
 
-# STATIC_ROOT = '/home2/namzadan/public_html/static'
-STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
+STATIC_ROOT = '/home2/namzadan/public_html/static'
+# STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
 STATIC_URL = '/static/'
