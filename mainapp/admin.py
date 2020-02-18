@@ -1,5 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.models import Group, User
+from django_summernote.admin import SummernoteModelAdmin
+from django_summernote.models import Attachment
 
 from .models import *
 
@@ -19,8 +21,12 @@ class CandidateA(admin.ModelAdmin):
     )
 
 
-# class ResumeA(admin.ModelAdmin):
-#     list_display = ('full_name', 'code', 'party', 'zone')
+class CandidateB(SummernoteModelAdmin):
+    summernote_fields = '__all__'
+
+
+class CandidateC(CandidateA, CandidateB):
+    pass
 
 
 class ProvinceA(admin.ModelAdmin):
@@ -30,11 +36,6 @@ class ProvinceA(admin.ModelAdmin):
 class CityA(admin.ModelAdmin):
     list_display = ('name', 'province')
     list_filter = ('province',)
-
-
-# class ZoneA(admin.ModelAdmin):
-#     list_display = ('name', 'city',)
-#     list_filter = ('city',)
 
 
 class ResumeA(admin.ModelAdmin):
@@ -53,13 +54,21 @@ class ResumeA(admin.ModelAdmin):
     )
 
 
+class ResumeB(SummernoteModelAdmin):
+    summernote_fields = '__all__'
+
+
+class ResumeC(ResumeA, ResumeB):
+    pass
+
+
 admin.site.unregister(Group)
 admin.site.unregister(User)
+admin.site.unregister(Attachment)
 
-admin.site.register(Candidate, CandidateA)
-admin.site.register(Resume, ResumeA)
+admin.site.register(Candidate, CandidateC)
+admin.site.register(Resume, ResumeC)
 admin.site.register(Province, ProvinceA)
 admin.site.register(City, CityA)
-# admin.site.register(Zone, ZoneA)
 
 admin.site.site_header = "نامزدان دات آی آر"
