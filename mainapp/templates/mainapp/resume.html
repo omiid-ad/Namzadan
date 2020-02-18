@@ -76,7 +76,10 @@
                 <!-- <li class="list-group-item">رشته تحصیلی : {{ resume.field }}</li> -->
                 <li class="list-group-item" style="direction: rtl;">سن : {{ resume.age }} سال</li>
                 <li class="list-group-item">مدرک و رشته تحصیلی : {{ resume.get_degree_display }} {{ resume.field }}</li>
-                <li class="list-group-item" style="direction: rtl;">شعار انتخاباتی : {{ resume.candidate.motto }} </li>
+                {% if resume.candidate.motto %}
+                    <li class="list-group-item" style="direction: rtl;">شعار انتخاباتی
+                        : {{ resume.candidate.motto }} </li>
+                {% endif %}
                 <li class="list-group-item">گرایش سیاسی : {{ resume.candidate.get_party_display }}</li>
             </ul>
 
