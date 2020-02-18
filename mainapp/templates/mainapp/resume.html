@@ -2,8 +2,9 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <link href="https://netdna.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
@@ -52,89 +53,47 @@
 </nav>
 <div class="container">
 
-<<<<<<< HEAD
-        <div class="Main-content">
-            <div class="profile-picture">
-                <img src="{{ MEDIA_URL }}{{ resume.candidate.profile_picture_url }}" alt="" height="350" width="310">
-            </div>
-            <div class="basic-info">
-                <ul class="list-group">
-                    <li class="list-group-item"><label for="">نام و نام خانوادگی : {{ resume.candidate.full_name }}</label>
-                    </li>
-                    {% if resume.candidate.father_name %}
-                    <li class="list-group-item">فرزند   {{ resume.candidate.father_name }}</li>
-                    {% endif %}
-                    {% if resume.candidate.nickname %}
-                    <li class="list-group-item">مشهور به   {{ resume.candidate.nickname }}</li>
-                    {% endif %}
-                    {% if resume.candidate.code %}
-                    <li class="list-group-item">کد نامزد: {{ resume.candidate.code }}</li>
-                    {% endif %}
-                    <li class="list-group-item">حوزه انتخابیه: {{ resume.candidate.city.name }} </li>
-                    <!-- <li class="list-group-item">محل تولد : {{ resume.birth_locate }}</li> -->
-                    <!-- <li class="list-group-item">رشته تحصیلی : {{ resume.field }}</li> -->
-                    <li class="list-group-item" style="direction: rtl;">سن : {{ resume.age }} سال</li>
-                    <li class="list-group-item">مدرک و رشته تحصیلی : {{ resume.get_degree_display }} {{ resume.field }}</li>
-                    <li class="list-group-item" style="direction: rtl;">شعار انتخاباتی : {{ resume.candidate.motto }} </li>
-                    <li class="list-group-item">گرایش سیاسی : {{ resume.candidate.get_party_display }}</li>
-=======
->>>>>>> 024c226f5e6d30e67916f420bf43d36c3066998b
 
     <div class="Main-content">
         <div class="profile-picture">
             <img src="{{ MEDIA_URL }}{{ resume.candidate.profile_picture_url }}" alt="" height="350" width="310">
         </div>
-<<<<<<< HEAD
-
-        <div class="jumbotron Past-Activities ">
-            <ul class="list-unstyled">
-                <li class="media">
-                    <div class="media-body">
-                        <h5 class="mt-0 mb-1 Resumetitle" style="direction: rtl;"> معرفی برنامه ها</h5>
-                        {{ resume.moarefi_barnameha }}
-                        <h5 class="mt-0 mb-1 biographytitle" style="direction: rtl;"> سوابق مدیریتی</h5>
-                        {{ resume.records }}
-                    </div>
-=======
         <div class="basic-info">
             <ul class="list-group">
                 <li class="list-group-item"><label for="">نام و نام خانوادگی : {{ resume.candidate.full_name }}</label>
->>>>>>> 024c226f5e6d30e67916f420bf43d36c3066998b
                 </li>
-                <li class="list-group-item">سن : {{ resume.age }} سال</li>
                 {% if resume.candidate.father_name %}
-                    <li class="list-group-item">فرزند : {{ resume.candidate.father_name }}</li>
+                    <li class="list-group-item">فرزند {{ resume.candidate.father_name }}</li>
                 {% endif %}
                 {% if resume.candidate.nickname %}
-                    <li class="list-group-item">مشهور به : {{ resume.candidate.nickname }}</li>
+                    <li class="list-group-item">مشهور به {{ resume.candidate.nickname }}</li>
                 {% endif %}
-                <li class="list-group-item">حوزه
-                    انتخابیه: {{ resume.candidate.city.name }} - {{ resume.candidate.city.province.name }}</li>
+                {% if resume.candidate.code %}
+                    <li class="list-group-item">کد نامزد: {{ resume.candidate.code }}</li>
+                {% endif %}
+                <li class="list-group-item">حوزه انتخابیه: {{ resume.candidate.city.name }} </li>
                 <!-- <li class="list-group-item">محل تولد : {{ resume.birth_locate }}</li> -->
                 <!-- <li class="list-group-item">رشته تحصیلی : {{ resume.field }}</li> -->
+                <li class="list-group-item" style="direction: rtl;">سن : {{ resume.age }} سال</li>
                 <li class="list-group-item">مدرک و رشته تحصیلی : {{ resume.get_degree_display }} {{ resume.field }}</li>
-                <li class="list-group-item">شعار انتخاباتی : {{ resume.candidate.motto }} </li>
+                <li class="list-group-item" style="direction: rtl;">شعار انتخاباتی : {{ resume.candidate.motto }} </li>
                 <li class="list-group-item">گرایش سیاسی : {{ resume.candidate.get_party_display }}</li>
-
             </ul>
+
+            <div class="jumbotron Past-Activities ">
+                <ul class="list-unstyled">
+                    <li class="media">
+                        <div class="media-body">
+                            <h5 class="mt-0 mb-1 Resumetitle"> معرفی برنامه ها</h5>
+                            {{ resume.moarefi_barnameha }}
+                            <h5 class="mt-0 mb-1 biographytitle"> سوابق مدیریتی</h5>
+                            {{ resume.records }}
+                        </div>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
-
-    <div class="jumbotron Past-Activities ">
-        <ul class="list-unstyled">
-            <li class="media">
-                <div class="media-body">
-                    <h5 class="mt-0 mb-1 Resumetitle"> معرفی برنامه ها</h5>
-                    {{ resume.moarefi_barnameha }}
-                    <h5 class="mt-0 mb-1 biographytitle"> سوابق مدیریتی</h5>
-                    {{ resume.records }}
-                </div>
-            </li>
-
-        </ul>
-    </div>
-
-
 </div>
 
 
@@ -144,6 +103,7 @@
         .کلیه حقوق مادی و معنوی این سایت متعلق به شرکت ایده پردازان رایان نیرو می باشد
     </div>
 </footer>
+
 </body>
 
 </html>

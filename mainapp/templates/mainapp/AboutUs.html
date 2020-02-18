@@ -2,8 +2,9 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <link href="https://netdna.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
@@ -12,98 +13,116 @@
 </head>
 
 <body>
-    <div class="desc-title">
+<div class="desc-title">
         <span>
             <p class="textnav">انتخاب آگاهانه</p>
             <p class="textnav">حفظ زیبایی</p>
             <p class="textnav">تبلیغات ماندگار</p>
         </span>
-        <span class="slugan">معرفی نامزدهای انتخابات یازدهمین دوره مجلس شورای اسلامی</span>
+    <span class="slugan">معرفی نامزدهای انتخابات یازدهمین دوره مجلس شورای اسلامی</span>
 
+</div>
+<nav class="navbar navbar-expand-lg navigationbar">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" role="img" focusable="false">
+            <title>Menu</title>
+            <path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"
+                  d="M4 7h22M4 15h22M4 23h22"></path>
+        </svg>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'home' %}">مشاهده نامزدها</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'contact_us' %}">تماس با ما</a>
+            </li>
+
+        </ul>
     </div>
-    <nav class="navbar navbar-expand-lg navigationbar">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" role="img" focusable="false"><title>Menu</title><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'home' %}">مشاهده نامزدها</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'contact_us' %}">تماس با ما</a>
-                </li>
-
-            </ul>
-        </div>
-        <div>
-            <form class="form-inline" method="post" action="{% url 'home' %}">
-                {% csrf_token %}
-                <input name="search" class="form-control mr-sm-2" type="search" placeholder="جستجو" aria-label="Search">
-                <button class="btn btn-outline-dark my-2 my-sm-0 Searchbutton" type="submit">جستجو</button>
-            </form>
-        </div>
-    </nav>
-
-    <div class="container main-aboutus">
-        <div class="jumbotron jumbotron-fluid">
-            <div class="container">
-                <h3 class="Aboutustitle">درباره نامزدان</h3>
-                <p class="Aboutustext"><p style="direction: rtl;">سایت نامزدان با هدف معرفی برنامه ها و سوابق نامزدهای انتخابات یازدهمین دوره مجلس شورای اسلامی راه اندازی گردیده است تا هم به مردم در انتخاب آگاهانه کمک نماید و هم انجام تبلیغات برای نامزدهای محترم نمایندگی را تسهیل و کم هزینه نماید.</p>
-<p style="direction: rtl;">معرفی کاندیداها و برنامه ها و سوابق آنها در این سایت، بر خلاف تبلیغات با استفاده از کاغذ و بنر، ماندگار است و به حفظ زیبایی شهرها کمک می نماید.</p>
-<p style="direction: rtl;">مشخصات فردی نامزدهای انتخابات که در این سایت ارائه گردیده است، بر گرفته از آگهی های انتخابات رسمی منتشر شده توسط فرمانداری ها می باشد.</p>
-<p style="direction: rtl;">سوابق درج شده برای هر نامزد براساس محتوای ارسال شده توسط نامزدهای انتخابات به این سایت است و این سایت مسئولیتی در خصوص صحت این سوابق ندارد.</p>
-<p style="direction: rtl;">کلیه حقوق مادی و معنوی این سایت متعلق به شرکت ایده پردازان رایان نیرو می باشد.</p>
-            </div>
-        </div>
+    <div>
+        <form class="form-inline" method="post" action="{% url 'home' %}">
+            {% csrf_token %}
+            <input name="search" class="form-control mr-sm-2" type="search" placeholder="جستجو" aria-label="Search">
+            <button class="btn btn-outline-dark my-2 my-sm-0 Searchbutton" type="submit">جستجو</button>
+        </form>
     </div>
-    <div class="container main-aboutus">
-        <div class="jumbotron jumbotron-fluid">
-            <div class="container">
-                <h3 class="Aboutustitle">روش ارسال سوابق و برنامه ها توسط نامزدها </h3>
-                <p class="Aboutustext">
-    <p style="direction: rtl;">                 
-	نامزدهای محترم می توانند جهت درج سوابق، برنامه ها و پوستر تبلیغاتی خود (در ابعاد ۳۵۰×۳۱۰ پیکسل) در صفحه اختصاصی شان در این سایت، موارد زیر را به آیدی@namzadan98 یا شماره ۰۹۰۵۵۱۵۱۷۳۰ در پیام رسان تلگرام یا واتساپ ارسال کنند یا به ایمیلnamzadan98@gmail.com ارسال نمایند.</p>
-<p style="direction: rtl;">۱- مشخصات، برنامه ها و سوابق نامزد شامل:</p>
-<p style="text-indent: 50px;">
-<p style="direction: rtl;">   *نام و نام خانوادگی</p>
-<p style="direction: rtl;">   نام پدر</p>
-<p style="direction: rtl;">   کد نامزد</p>
-<p style="direction: rtl;">   *استان و حوزه انتخاباتی</p>
-<p style="direction: rtl;">   مدرک و رشته تحصیلی</p>
-<p style="direction: rtl;">   سن</p>
-<p style="direction: rtl;">   شعار انتخاباتی</p>
-<p style="direction: rtl;">   گرایش سیاسی</p>
-<p style="direction: rtl;">   لیست برنامه&zwnj;ها</p>
-<p style="direction: rtl;">   لیست سوابق</p>
-<p style="direction: rtl;">   (تنها درج موارد ستاره&zwnj;دار الزامی است)</p>
+</nav>
 
-<p style="direction: rtl;">۲-
- فایل پوستر تبلیغاتی نامزد</p>
-<p style="direction: rtl;">۳- تصویر واریز هزینه به صورت کارت به کارت به شماره کارت بانکی ۶۰۳۷۹۹۷۱۲۶۸۸۵۱۲۹ بانک ملی ایران به نام خانم مریم اکملی</p>
-
-<p style="direction: rtl;">محتوای درج شده در صفحه اختصاصی هر نامزد، تا روز برگزاری انتخابات باقی خواهد ماند.</p>
-<p style="text-align: right;">&nbsp; --------------------------</p>
-
-
-<p style="direction: rtl;">
-    نامزدهای محترم یا گروه های سیاسی می توانند فایل پوستر تبلیغاتی خود را جهت درج در بالا یا پایین صفحه اصلی سایت (در ابعاد ۳۲۰×۲۴۰ پیکسل) به همراه تصویر واریز هزینه به شماره کارت بانکی فوق، به آیدی@namzadan98 یا شماره ۰۹۰۵۵۱۵۱۷۳۰ در پیام رسان تلگرام یا واتساپ ارسال کنند یا به ایمیلnamzadan98@gmail.com ارسال نمایند.
-</p>
-<p style="direction: rtl;">هزینه درج پوستر تبلیغاتی در بالای صفحه اصلی سایت برای هر روز ۱۵۰۰۰۰ تومان و در پایین صفحه اصلی سایت برای هر روز ۸۰۰۰۰ تومان می&zwnj;باشد.</p>
-<p style="text-align: right;">&nbsp; --------------------------</p>
-<p style="direction: rtl;">شماره تماس جهت کسب اطلاعات بیشتر: ۰۹۰۵۵۱۵۱۷۳۰</p>
-            </div>
+<div class="container main-aboutus">
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h3 class="Aboutustitle">درباره نامزدان</h3>
+            <p class="Aboutustext">
+            <p style="direction: rtl;">سایت نامزدان با هدف معرفی برنامه ها و سوابق نامزدهای انتخابات یازدهمین دوره مجلس
+                شورای اسلامی راه اندازی گردیده است تا هم به مردم در انتخاب آگاهانه کمک نماید و هم انجام تبلیغات برای
+                نامزدهای محترم نمایندگی را تسهیل و کم هزینه نماید.</p>
+            <p style="direction: rtl;">معرفی کاندیداها و برنامه ها و سوابق آنها در این سایت، بر خلاف تبلیغات با استفاده
+                از کاغذ و بنر، ماندگار است و به حفظ زیبایی شهرها کمک می نماید.</p>
+            <p style="direction: rtl;">مشخصات فردی نامزدهای انتخابات که در این سایت ارائه گردیده است، بر گرفته از آگهی
+                های انتخابات رسمی منتشر شده توسط فرمانداری ها می باشد.</p>
+            <p style="direction: rtl;">سوابق درج شده برای هر نامزد براساس محتوای ارسال شده توسط نامزدهای انتخابات به این
+                سایت است و این سایت مسئولیتی در خصوص صحت این سوابق ندارد.</p>
+            <p style="direction: rtl;">کلیه حقوق مادی و معنوی این سایت متعلق به شرکت ایده پردازان رایان نیرو می
+                باشد.</p>
         </div>
     </div>
+</div>
+<div class="container main-aboutus">
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h3 class="Aboutustitle">روش ارسال سوابق و برنامه ها توسط نامزدها </h3>
+            <p class="Aboutustext">
+            <p style="direction: rtl;">
+                نامزدهای محترم می توانند جهت درج سوابق، برنامه ها و پوستر تبلیغاتی خود (در ابعاد ۳۵۰×۳۱۰ پیکسل) در صفحه
+                اختصاصی شان در این سایت، موارد زیر را به آیدی@namzadan98 یا شماره ۰۹۰۵۵۱۵۱۷۳۰ در پیام رسان تلگرام یا
+                واتساپ ارسال کنند یا به ایمیلnamzadan98@gmail.com ارسال نمایند.</p>
+            <p style="direction: rtl;">۱- مشخصات، برنامه ها و سوابق نامزد شامل:</p>
+            <p style="text-indent: 50px;">
+            <p style="direction: rtl;"> *نام و نام خانوادگی</p>
+            <p style="direction: rtl;"> نام پدر</p>
+            <p style="direction: rtl;"> کد نامزد</p>
+            <p style="direction: rtl;"> *استان و حوزه انتخاباتی</p>
+            <p style="direction: rtl;"> مدرک و رشته تحصیلی</p>
+            <p style="direction: rtl;"> سن</p>
+            <p style="direction: rtl;"> شعار انتخاباتی</p>
+            <p style="direction: rtl;"> گرایش سیاسی</p>
+            <p style="direction: rtl;"> لیست برنامه&zwnj;ها</p>
+            <p style="direction: rtl;"> لیست سوابق</p>
+            <p style="direction: rtl;"> (تنها درج موارد ستاره&zwnj;دار الزامی است)</p>
+
+            <p style="direction: rtl;">۲-
+                فایل پوستر تبلیغاتی نامزد</p>
+            <p style="direction: rtl;">۳- تصویر واریز هزینه به صورت کارت به کارت به شماره کارت بانکی ۶۰۳۷۹۹۷۱۲۶۸۸۵۱۲۹
+                بانک ملی ایران به نام خانم مریم اکملی</p>
+
+            <p style="direction: rtl;">محتوای درج شده در صفحه اختصاصی هر نامزد، تا روز برگزاری انتخابات باقی خواهد
+                ماند.</p>
+            <p style="text-align: right;">&nbsp; --------------------------</p>
 
 
-
-    <script src="https://netdna.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-    <footer>
-        <div class="alert alert-dark" role="alert">
-            .کلیه حقوق مادی و معنوی این سایت متعلق به شرکت ایده پردازان رایان نیرو می باشد
+            <p style="direction: rtl;">
+                نامزدهای محترم یا گروه های سیاسی می توانند فایل پوستر تبلیغاتی خود را جهت درج در بالا یا پایین صفحه اصلی
+                سایت (در ابعاد ۳۲۰×۲۴۰ پیکسل) به همراه تصویر واریز هزینه به شماره کارت بانکی فوق، به آیدی@namzadan98 یا
+                شماره ۰۹۰۵۵۱۵۱۷۳۰ در پیام رسان تلگرام یا واتساپ ارسال کنند یا به ایمیلnamzadan98@gmail.com ارسال نمایند.
+            </p>
+            <p style="direction: rtl;">هزینه درج پوستر تبلیغاتی در بالای صفحه اصلی سایت برای هر روز ۱۵۰۰۰۰ تومان و در
+                پایین صفحه اصلی سایت برای هر روز ۸۰۰۰۰ تومان می&zwnj;باشد.</p>
+            <p style="text-align: right;">&nbsp; --------------------------</p>
+            <p style="direction: rtl;">شماره تماس جهت کسب اطلاعات بیشتر: ۰۹۰۵۵۱۵۱۷۳۰</p>
         </div>
-    </footer>
+    </div>
+</div>
+
+
+<script src="https://netdna.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<footer>
+    <div class="alert alert-dark" role="alert">
+        .کلیه حقوق مادی و معنوی این سایت متعلق به شرکت ایده پردازان رایان نیرو می باشد
+    </div>
+</footer>
 </body>
 
 </html>
