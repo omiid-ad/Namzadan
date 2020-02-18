@@ -65,7 +65,7 @@
                     {% if all_provinces %}
                         <option value="none">استان</option>
                         {% for p in all_provinces %}
-                            {% if p.name == "تهران" %}
+                            {% if p.name == selected_province.name %}
                                 <option selected value="{{ p.pk }}">{{ p.name }}</option>
                             {% else %}
                                 <option value="{{ p.pk }}">{{ p.name }}</option>
@@ -78,6 +78,9 @@
                 <label for=""> حوزه </label>
                 <select name="zone" id="inputState" class="form-control">
                     <option value="none" selected="">حوزه انتخاباتی</option>
+                    {% ifnotequal selected_zone.pk None %}
+                    <option selected value="{{ selected_zone.pk }}">{{ selected_zone.name }}</option>
+                    {% endifnotequal %}
                 </select>
             </div>
             <div class="col-md-4 searchbtn">
