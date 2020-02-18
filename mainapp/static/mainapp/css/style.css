@@ -34,14 +34,21 @@
         grid-template-rows: auto;
         text-align: right;
     }
-    .profile-picture {
+    /* .profile-picture {
         text-align: center;
         margin: 1rem 0rem;
+    } */
+    .profile-picture {
+        text-align: center !important;
     }
     .slugan {
         display: none;
     }
     .griding-div {
+        display: grid;
+        grid-template-columns: 1fr !important;
+    }
+    .user-info {
         display: grid;
         grid-template-columns: 1fr !important;
     }
@@ -218,7 +225,7 @@ button.navbar-toggler.collapsed {
 .Main-content {
     margin-top: 3rem;
     display: grid;
-    grid-template-columns: 25% 75%;
+    grid-template-columns: 17% 66% 17%;
     grid-template-rows: auto;
     text-align: right;
 }
@@ -366,4 +373,9 @@ label {
     flex-wrap: wrap;
     margin-right: 0 !important;
     margin-left: 0 !important;
+}
+
+.user-info {
+    display: grid;
+    grid-template-columns: 25% 70%;
 }
