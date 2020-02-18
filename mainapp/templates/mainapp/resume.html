@@ -78,7 +78,7 @@
                 <li class="list-group-item">مدرک و رشته تحصیلی : {{ resume.get_degree_display }} {{ resume.field }}</li>
                 {% if resume.candidate.motto %}
                     <li class="list-group-item">شعار انتخاباتی
-                        : {{ resume.candidate.motto }} </li>
+                        : {{ resume.candidate.motto | safe }} </li>
                 {% endif %}
                 <li class="list-group-item">گرایش سیاسی : {{ resume.candidate.get_party_display }}</li>
             </ul>
