@@ -88,9 +88,9 @@
                     <li class="media">
                         <div class="media-body">
                             <h5 class="mt-0 mb-1 Resumetitle"> معرفی برنامه ها</h5>
-                            {{ resume.moarefi_barnameha }}
+                            {{ resume.moarefi_barnameha | safe }}
                             <h5 class="mt-0 mb-1 biographytitle"> سوابق مدیریتی</h5>
-                            {{ resume.records }}
+                            {{ resume.records | safe}}
                         </div>
                     </li>
                 </ul>
