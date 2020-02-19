@@ -86,9 +86,21 @@
                         {% endif %}
                         <li class="list-group-item">گرایش سیاسی : {{ resume.candidate.get_party_display }}</li>
                     </ul>
-
+                    <div class="jumbotron Past-Activities ">
+                        <ul class="list-unstyled">
+                            <li class="media">
+                                <div class="media-body">
+                                    <h5 class="mt-0 mb-1 Resumetitle"> معرفی برنامه ها</h5>
+                                    {{ resume.moarefi_barnameha | safe }}
+                                    <h5 class="mt-0 mb-1 biographytitle"> سوابق مدیریتی</h5>
+                                    {{ resume.records | safe}}
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
 
                 </div>
+
             </div>
             <div class="right-sidebar">
                 <img class="side-posters" src="https://namzadan.ir/media/banners/Dr Mirzadeh poster.jpg" alt="بنر۱">
@@ -99,18 +111,7 @@
             </div>
         </div>
     </div>
-    <div class="jumbotron Past-Activities ">
-        <ul class="list-unstyled">
-            <li class="media">
-                <div class="media-body">
-                    <h5 class="mt-0 mb-1 Resumetitle"> معرفی برنامه ها</h5>
-                    {{ resume.moarefi_barnameha | safe }}
-                    <h5 class="mt-0 mb-1 biographytitle"> سوابق مدیریتی</h5>
-                    {{ resume.records | safe}}
-                </div>
-            </li>
-        </ul>
-    </div>
+
     <script src="https://netdna.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <footer>
         <div class="alert alert-dark" role="alert">
