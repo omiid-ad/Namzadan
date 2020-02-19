@@ -12,7 +12,7 @@ from .models import Candidate, City, Resume, Province
 
 def home(request):
     all_candidates = Candidate.objects.filter(city__province__name__exact="تهران").order_by(
-                    'resume', 'full_name')
+                    'resume', 'full_name').reverse()
     all_provinces = Province.objects.all().order_by('name')
     all_zones = City.objects.all().order_by('name')
     MEDIA_URL = settings.MEDIA_URL
@@ -32,7 +32,7 @@ def home(request):
                 Q(father_name__contains=search_text) | Q(code__contains=search_text) |
                 Q(party__contains=search_text) |
                 Q(city__name__contains=search_text)).order_by(
-                    'resume', 'full_name')
+                    'resume', 'full_name').reverse()
             paginator = Paginator(all_candidates, 90)
             page_number = request.GET.get('page')
             page_obj = paginator.get_page(page_number)
@@ -51,7 +51,7 @@ def home(request):
         if province_pk == "none":
             if zone_pk != "none":
                 all_candidates = Candidate.objects.filter(city_id=zone_pk).order_by(
-                    'resume', 'full_name')
+                    'resume', 'full_name').reverse()
                 selected_zone = City.objects.get(pk=zone_pk)
                 paginator = Paginator(all_candidates, 90)
                 page_number = request.GET.get('page')
@@ -63,7 +63,7 @@ def home(request):
         if province_pk != "none":
             if zone_pk == "none":
                 all_candidates = Candidate.objects.filter(city__province_id=province_pk).order_by(
-                    'resume', 'full_name')
+                    'resume', 'full_name').reverse()
                 selected_province = Province.objects.get(pk=province_pk)
                 paginator = Paginator(all_candidates, 90)
                 page_number = request.GET.get('page')
@@ -75,7 +75,7 @@ def home(request):
         if province_pk != "none":
             if zone_pk != "none":
                 all_candidates = Candidate.objects.filter(city__province_id=province_pk, city_id=zone_pk).order_by(
-                    'resume', 'full_name')
+                    'resume', 'full_name').reverse()
                 selected_province = Province.objects.get(pk=province_pk)
                 selected_zone = City.objects.get(pk=zone_pk)
                 paginator = Paginator(all_candidates, 90)
