@@ -379,3 +379,7 @@ label {
     display: grid;
     grid-template-columns: 25% 70%;
 }
+
+.profile-picture {
+    text-align: center !important;
+}
