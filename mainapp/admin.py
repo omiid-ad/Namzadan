@@ -70,5 +70,6 @@ admin.site.register(Candidate, CandidateC)
 admin.site.register(Resume, ResumeC)
 admin.site.register(Province, ProvinceA)
 admin.site.register(City, CityA)
+admin.site.register(GlobalAds)
 
 admin.site.site_header = "نامزدان دات آی آر"

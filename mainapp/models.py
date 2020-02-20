@@ -94,3 +94,12 @@ class Resume(models.Model):
 
     def __str__(self):
         return self.candidate.full_name
+
+
+class GlobalAds(models.Model):
+    banner = models.ImageField(upload_to="global", default="global/default.jpg", blank=True, verbose_name="پوستر")
+
+    def save(self, *args, **kwargs):
+        if self.banner is None:
+            self.banner = "media/global/default.jpg"
+        super().save()

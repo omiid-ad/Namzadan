@@ -7,14 +7,15 @@ from django.db.models import Q
 from django.core.paginator import Paginator
 from Namzadan import settings
 
-from .models import Candidate, City, Resume, Province
+from .models import Candidate, City, Resume, Province, GlobalAds
 
 
 def home(request):
     all_candidates = Candidate.objects.filter(city__province__name__exact="تهران").order_by(
-                    'resume', 'full_name').reverse()
+        'resume', 'full_name').reverse()
     all_provinces = Province.objects.all().order_by('name')
     all_zones = City.objects.all().order_by('name')
+    global_ads = GlobalAds.objects.all()[:4]
     MEDIA_URL = settings.MEDIA_URL
     paginator = Paginator(all_candidates, 90)
     page_number = request.GET.get('page')
@@ -23,7 +24,8 @@ def home(request):
         selected_province = Province.objects.get(name__exact="تهران")
         return render(request, 'mainapp/all-candidates.html',
                       {'all_candidates': all_candidates, 'all_provinces': all_provinces, 'all_zones': all_zones,
-                       'page_obj': page_obj, 'MEDIA_URL': MEDIA_URL, 'selected_province': selected_province})
+                       'page_obj': page_obj, 'MEDIA_URL': MEDIA_URL, 'selected_province': selected_province,
+                       'global_ads': global_ads})
     else:
         if 'search' in request.POST:
             search_text = str(request.POST['search'])
@@ -32,14 +34,15 @@ def home(request):
                 Q(father_name__contains=search_text) | Q(code__contains=search_text) |
                 Q(party__contains=search_text) |
                 Q(city__name__contains=search_text)).order_by(
-                    'resume', 'full_name').reverse()
+                'resume', 'full_name').reverse()
             paginator = Paginator(all_candidates, 90)
             page_number = request.GET.get('page')
             page_obj = paginator.get_page(page_number)
             return render(request, 'mainapp/all-candidates.html',
                           {'all_candidates': all_candidates, 'all_provinces': all_provinces, 'all_zones': all_zones,
                            'MEDIA_URL': MEDIA_URL,
-                           'page_obj': page_obj})
+                           'page_obj': page_obj,
+                           'global_ads': global_ads})
         province_pk = request.POST['province']
         zone_pk = request.POST['zone']
         if province_pk == "none":
@@ -47,7 +50,8 @@ def home(request):
                 return render(request, 'mainapp/all-candidates.html',
                               {'all_candidates': all_candidates, 'all_provinces': all_provinces, 'all_zones': all_zones,
                                'MEDIA_URL': MEDIA_URL,
-                               'page_obj': page_obj})
+                               'page_obj': page_obj,
+                               'global_ads': global_ads})
         if province_pk == "none":
             if zone_pk != "none":
                 all_candidates = Candidate.objects.filter(city_id=zone_pk).order_by(
@@ -59,7 +63,8 @@ def home(request):
                 return render(request, 'mainapp/all-candidates.html',
                               {'all_candidates': all_candidates, 'all_provinces': all_provinces, 'all_zones': all_zones,
                                'MEDIA_URL': MEDIA_URL,
-                               'page_obj': page_obj, 'selected_zone': selected_zone})
+                               'page_obj': page_obj, 'selected_zone': selected_zone,
+                               'global_ads': global_ads})
         if province_pk != "none":
             if zone_pk == "none":
                 all_candidates = Candidate.objects.filter(city__province_id=province_pk).order_by(
@@ -71,7 +76,8 @@ def home(request):
                 return render(request, 'mainapp/all-candidates.html',
                               {'all_candidates': all_candidates, 'all_provinces': all_provinces, 'all_zones': all_zones,
                                'MEDIA_URL': MEDIA_URL,
-                               'page_obj': page_obj, 'selected_province': selected_province})
+                               'page_obj': page_obj, 'selected_province': selected_province,
+                               'global_ads': global_ads})
         if province_pk != "none":
             if zone_pk != "none":
                 all_candidates = Candidate.objects.filter(city__province_id=province_pk, city_id=zone_pk).order_by(
@@ -85,7 +91,8 @@ def home(request):
                               {'all_candidates': all_candidates, 'all_provinces': all_provinces, 'all_zones': all_zones,
                                'MEDIA_URL': MEDIA_URL,
                                'page_obj': page_obj, 'selected_province': selected_province,
-                               'selected_zone': selected_zone})
+                               'selected_zone': selected_zone,
+                               'global_ads': global_ads})
 
 
 def contact_us(request):

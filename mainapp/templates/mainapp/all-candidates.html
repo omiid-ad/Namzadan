@@ -103,11 +103,13 @@
 
     <div class="griding-div">
         <div class="left-sidebar">
-            <img class="side-posters" src="https://namzadan.ir/media/banners/Dr Mirzadeh poster.jpg" alt="بنر۱">
-            <img class="side-posters" src="https://namzadan.ir/media/banners/default_PTRwFVr.jpg" alt="بنر۲">
-            <img class="side-posters" src="https://namzadan.ir/media/banners/default_PTRwFVr.jpg" alt="بنر۳">
-            <img class="side-posters" src="https://namzadan.ir/media/banners/default_PTRwFVr.jpg" alt="بنر۴">
-
+            {% for ga in global_ads %}
+                {% if not ga.banner %}
+                    <img class="side-posters" src="media/global/default.jpg" alt="banner{{ forloop.counter }}">
+                {% else %}
+                    <img class="side-posters" src="{{ MEDIA_URL }}{{ ga.banner }}" alt="banner{{ forloop.counter }}">
+                {% endif %}
+            {% endfor %}
 
         </div>
         <div class="row candidates">
@@ -134,11 +136,13 @@
 
         </div>
         <div class="right-sidebar">
-            <img class="side-posters" src="https://namzadan.ir/media/banners/default_PTRwFVr.jpg" alt="بنر۱">
-            <img class="side-posters" src="https://namzadan.ir/media/banners/default_PTRwFVr.jpg" alt="بنر۲">
-            <img class="side-posters" src="https://namzadan.ir/media/banners/default_PTRwFVr.jpg" alt="بنر۳">
-            <img class="side-posters" src="https://namzadan.ir/media/banners/default_PTRwFVr.jpg" alt="بنر۴">
-
+            {% for ga in global_ads %}
+                {% if not ga.banner %}
+                    <img class="side-posters" src="media/global/default.jpg" alt="banner{{ forloop.counter }}">
+                {% else %}
+                    <img class="side-posters" src="{{ MEDIA_URL }}{{ ga.banner }}" alt="banner{{ forloop.counter }}">
+                {% endif %}
+            {% endfor %}
 
         </div>
     </div>
