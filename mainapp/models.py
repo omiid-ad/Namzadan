@@ -16,14 +16,6 @@ class City(models.Model):
         return self.name + " - " + self.province.name
 
 
-# class Zone(models.Model):
-#     city = models.ForeignKey(City, on_delete=models.CASCADE, verbose_name="شهر مربوطه")
-#     name = models.CharField(max_length=20, verbose_name="نام یا کد ناحیه")
-
-#     def __str__(self):
-#         return self.name + " - " + self.city.name
-
-
 class Candidate(models.Model):
     OSOOLGARA = 'OS'
     ESLAHTALAB = 'ES'
@@ -45,7 +37,6 @@ class Candidate(models.Model):
     code = models.CharField(max_length=10, verbose_name="کد انتخاباتی", blank=True, null=True)
     motto = models.TextField(blank=True, verbose_name="شعار انتخاباتی")
     party = models.CharField(max_length=25, choices=PARTIES, default=UNKNOWN, verbose_name="حزب")
-    # zone = models.ForeignKey(Zone, on_delete=models.CASCADE, verbose_name="ناحیه", default=None)
     city = models.ForeignKey(City, on_delete=models.CASCADE, verbose_name="ناحیه انتخاباتی", default=None)
 
     def __str__(self):
@@ -83,8 +74,6 @@ class Resume(models.Model):
     degree = models.CharField(max_length=50, blank=True, choices=DEGREES, default=UNKNOWN, verbose_name="مدرک تحصیلی")
     field = models.CharField(max_length=50, blank=True, verbose_name="رشته تحصیلی")
     moarefi_barnameha = models.TextField(blank=True, verbose_name="معرفی برنامه ها")
-    # birth_locate = models.CharField(max_length=50, blank=True, verbose_name="محل تولد")
-    # biography = models.TextField(blank=True, verbose_name="زندگی نامه")
     records = models.TextField(blank=True, verbose_name="سوابق")
     banner1 = models.ImageField(upload_to="banners", default="banners/default.jpg", blank=True,
                                 verbose_name="پوستر۱")  # 240*320

@@ -1,5 +1,3 @@
-import json
-
 from django.contrib import messages
 from django.core import serializers
 from django.shortcuts import render, redirect

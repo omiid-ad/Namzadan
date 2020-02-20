@@ -192,7 +192,7 @@
                     removeOptions(is);
                     for (var i = 0; i < city_json.length; i++) {
                         var option = document.createElement("option");
-                        option.text = city_json[i].fields["name"] ;
+                        option.text = city_json[i].fields["name"];
                         option.value = city_json[i].pk;
                         is.add(option);
                     }
@@ -203,45 +203,6 @@
 
     }
 </script>
-{#<script>#}
-{#    function removeOptions(selectbox) {#}
-{#        var i;#}
-{#        for (i = selectbox.options.length - 1; i >= 0; i--) {#}
-{#            selectbox.remove(i);#}
-{#        }#}
-{#    }#}
-{##}
-{#    $(document).ready(function () {#}
-{#        $('#inputProvince').click(function () {#}
-{#            var province_id = $(this).val();#}
-{#            if (province_id === 'none') {#}
-{#                removeOptions(document.getElementById("inputState"));#}
-{#                $('#inputState').append($('<option>').text("ابتدا استان را انتخاب کنید").attr('value', 'none'));#}
-{#            }#}
-{#            if (province_id !== "none") {#}
-{#                $.ajax({#}
-{#                    url: '{% url 'get_cities' %}',#}
-{#                    data: {#}
-{#                        'province_id': province_id#}
-{#                    },#}
-{#                    dataType: 'json',#}
-{#                    success: function (data) {#}
-{#                        if (data.status === 200) {#}
-{#                            var city = data.city_json;#}
-{#                            var obj = JSON.parse(city);#}
-{#                            removeOptions(document.getElementById("inputState"));#}
-{#                            for (var i = 0; i < obj.length; i++) {#}
-{#                                $('#inputState').append($('<option>').text(obj[i].fields["name"]).attr('value', obj[i].pk));#}
-{#                            }#}
-{#                        }#}
-{#                    }#}
-{#                })#}
-{#            }#}
-{#        });#}
-{#    });#}
-{#</script>#}
-
-
 <script src="https://netdna.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script type="text/javascript">
 </script>
@@ -250,9 +211,6 @@
         .کلیه حقوق مادی و معنوی این سایت متعلق به شرکت ایده پردازان رایان نیرو می باشد
     </div>
 </footer>
-</body>
-
-</html>
 </body>
 
 </html>
