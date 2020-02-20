@@ -383,3 +383,6 @@ label {
 .profile-picture {
     text-align: center !important;
 }
+.row.candidates {
+    direction: rtl !important;
+}
