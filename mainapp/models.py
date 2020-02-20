@@ -97,6 +97,7 @@ class Resume(models.Model):
 
 
 class GlobalAds(models.Model):
+    candidate = models.ForeignKey(Candidate, on_delete=models.CASCADE, verbose_name="نامزد", blank=True, null=True)
     banner = models.ImageField(upload_to="global", default="global/default.jpg", blank=True, verbose_name="پوستر")
 
     def save(self, *args, **kwargs):

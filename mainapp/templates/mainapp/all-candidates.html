@@ -104,10 +104,12 @@
     <div class="griding-div">
         <div class="left-sidebar">
             {% for ga in global_ads %}
-                {% if not ga.banner %}
-                    <img class="side-posters" src="media/global/default.jpg" alt="banner{{ forloop.counter }}">
-                {% else %}
+                {% if not ga.candidate %}
                     <img class="side-posters" src="{{ MEDIA_URL }}{{ ga.banner }}" alt="banner{{ forloop.counter }}">
+                {% else %}
+                    <a href="{% url 'resume' ga.candidate.pk %}"><img class="side-posters"
+                                                                      src="{{ MEDIA_URL }}{{ ga.banner }}"
+                                                                      alt="banner{{ forloop.counter }}"></a>
                 {% endif %}
             {% endfor %}
 
@@ -137,10 +139,12 @@
         </div>
         <div class="right-sidebar">
             {% for ga in global_ads %}
-                {% if not ga.banner %}
-                    <img class="side-posters" src="media/global/default.jpg" alt="banner{{ forloop.counter }}">
-                {% else %}
+                {% if not ga.candidate %}
                     <img class="side-posters" src="{{ MEDIA_URL }}{{ ga.banner }}" alt="banner{{ forloop.counter }}">
+                {% else %}
+                    <a href="{% url 'resume' ga.candidate.pk %}"><img class="side-posters"
+                                                                      src="{{ MEDIA_URL }}{{ ga.banner }}"
+                                                                      alt="banner{{ forloop.counter }}"></a>
                 {% endif %}
             {% endfor %}
 
