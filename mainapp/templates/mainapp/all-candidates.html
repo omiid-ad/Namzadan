@@ -60,7 +60,7 @@
         <div class="form-row">
             <div class="form-group col-md-3 ">
                 <label for="">استان</label>
-                <select name="province" id="inputProvince" class="form-control">
+                <select name="province" id="inputProvince" class="form-control" onchange="getCities(this.value)">
                     {% if all_provinces %}
                         <option value="none">استان</option>
                         {% for p in all_provinces %}
@@ -172,35 +172,74 @@
         }
     }
 
-    $(document).ready(function () {
-        $('#inputProvince').click(function () {
-            var province_id = $(this).val();
-            if (province_id === 'none') {
-                removeOptions(document.getElementById("inputState"));
-                $('#inputState').append($('<option>').text("ابتدا استان را انتخاب کنید").attr('value', 'none'));
-            }
-            if (province_id !== "none") {
-                $.ajax({
-                    url: '{% url 'get_cities' %}',
-                    data: {
-                        'province_id': province_id
-                    },
-                    dataType: 'json',
-                    success: function (data) {
-                        if (data.status === 200) {
-                            var city = data.city_json;
-                            var obj = JSON.parse(city);
-                            removeOptions(document.getElementById("inputState"));
-                            for (var i = 0; i < obj.length; i++) {
-                                $('#inputState').append($('<option>').text(obj[i].fields["name"]).attr('value', obj[i].pk));
-                            }
-                        }
+    function getCities(pk) {
+        var xhttp;
+        var is = document.getElementById("inputState");
+        if (pk == "none" || pk == "") {
+            removeOptions(is);
+            var option = document.createElement("option");
+            option.text = "ابتدا استان را انتخاب کنید";
+            option.value = "none";
+            is.add(option);
+        } else {
+            xhttp = new XMLHttpRequest();
+            xhttp.open("GET", "/get_cities?province_id=" + pk, true);
+            xhttp.send();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    var city = JSON.parse(this.response);
+                    var city_json = JSON.parse(city["city_json"]);
+                    removeOptions(is);
+                    for (var i = 0; i < city_json.length; i++) {
+                        var option = document.createElement("option");
+                        option.text = city_json[i].fields["name"] ;
+                        option.value = city_json[i].pk;
+                        is.add(option);
                     }
-                })
-            }
-        });
-    });
+                }
+            };
+
+        }
+
+    }
 </script>
+{#<script>#}
+{#    function removeOptions(selectbox) {#}
+{#        var i;#}
+{#        for (i = selectbox.options.length - 1; i >= 0; i--) {#}
+{#            selectbox.remove(i);#}
+{#        }#}
+{#    }#}
+{##}
+{#    $(document).ready(function () {#}
+{#        $('#inputProvince').click(function () {#}
+{#            var province_id = $(this).val();#}
+{#            if (province_id === 'none') {#}
+{#                removeOptions(document.getElementById("inputState"));#}
+{#                $('#inputState').append($('<option>').text("ابتدا استان را انتخاب کنید").attr('value', 'none'));#}
+{#            }#}
+{#            if (province_id !== "none") {#}
+{#                $.ajax({#}
+{#                    url: '{% url 'get_cities' %}',#}
+{#                    data: {#}
+{#                        'province_id': province_id#}
+{#                    },#}
+{#                    dataType: 'json',#}
+{#                    success: function (data) {#}
+{#                        if (data.status === 200) {#}
+{#                            var city = data.city_json;#}
+{#                            var obj = JSON.parse(city);#}
+{#                            removeOptions(document.getElementById("inputState"));#}
+{#                            for (var i = 0; i < obj.length; i++) {#}
+{#                                $('#inputState').append($('<option>').text(obj[i].fields["name"]).attr('value', obj[i].pk));#}
+{#                            }#}
+{#                        }#}
+{#                    }#}
+{#                })#}
+{#            }#}
+{#        });#}
+{#    });#}
+{#</script>#}
 
 
 <script src="https://netdna.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
