@@ -56,7 +56,10 @@ def home(request):
         zone_pk = request.POST['zone']
         if province_pk == "none":
             if zone_pk == "none":
-                all_candidates = Candidate.objects.filter(city__province__name__exact="تهران").order_by(
+                selected_province = Province.objects.get(name__exact="تهران")
+                selected_zone = City.objects.get(name__exact="تهران، ري، شميرانات، اسلامشهر و پرديس")
+                all_candidates = Candidate.objects.filter(city__province=selected_province,
+                                                          city=selected_zone).order_by(
                     'resume', 'full_name').reverse()
                 paginator = Paginator(all_candidates, 90)
                 page_number = 1
@@ -67,7 +70,8 @@ def home(request):
                 page_obj = paginator.get_page(page_number)
                 return render(request, 'mainapp/all-candidates.html',
                               {'all_candidates': all_candidates, 'all_provinces': all_provinces, 'all_zones': all_zones,
-                               'MEDIA_URL': MEDIA_URL,
+                               'MEDIA_URL': MEDIA_URL, 'selected_province': selected_province,
+                               'selected_zone': selected_zone,
                                'page_obj': page_obj,
                                'global_ads': global_ads})
         if province_pk == "none":
