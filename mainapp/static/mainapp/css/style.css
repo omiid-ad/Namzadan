@@ -369,6 +369,7 @@ label {
 .row {
     display: -ms-flexbox;
     display: flex;
+    flex-direction: row-reverse !important;
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
     margin-right: 0 !important;
