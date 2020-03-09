@@ -93,9 +93,10 @@ def home(request):
                                'global_ads': global_ads})
         if province_pk != "none":
             if zone_pk == "none":
-                all_candidates = Candidate.objects.filter(city__province_id=province_pk).order_by(
-                    'resume', 'full_name').reverse()
                 selected_province = Province.objects.get(pk=province_pk)
+                selected_zone = City.objects.filter(province_id=province_pk).order_by('name').first()
+                all_candidates = Candidate.objects.filter(city__province=selected_province,
+                                                          city=selected_zone).order_by('resume', 'full_name').reverse()
                 paginator = Paginator(all_candidates, 90)
                 page_number = 1
                 try:
@@ -107,6 +108,7 @@ def home(request):
                               {'all_candidates': all_candidates, 'all_provinces': all_provinces, 'all_zones': all_zones,
                                'MEDIA_URL': MEDIA_URL,
                                'page_obj': page_obj, 'selected_province': selected_province,
+                               'selected_zone': selected_zone,
                                'global_ads': global_ads})
         if province_pk != "none":
             if zone_pk != "none":
