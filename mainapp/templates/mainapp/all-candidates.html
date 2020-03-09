@@ -151,47 +151,39 @@
         </div>
     </div>
     <div class="downpage-Pagination">
-        <nav>
+        <nav aria-label="Page navigation example">
             {% if page_obj.has_previous %}
                 <form id="first" method="post" action="{% url 'home' %}">
                     {% csrf_token %}
                     <input type="hidden" name="page" value="1"/>
                     <input type="hidden" name="province" value="{{ selected_province.pk }}"/>
                     <input type="hidden" name="zone" value="{{ selected_zone.pk }}"/>
-                    <a href="#" class="page-item" onclick="firstPage()">نخست</a>
+                    <a href="#" class="page-item" onclick="firstPage()">&laquo; نخست</a>
                 </form>
                 <form id="pre" method="post" action="{% url 'home' %}">
                 {% csrf_token %}
                 <input type="hidden" name="page" value="{{ page_obj.previous_page_number }}"/>
                 <input type="hidden" name="province" value="{{ selected_province.pk }}"/>
                 <input type="hidden" name="zone" value="{{ selected_zone.pk }}"/>
-                <div class="tooltip">
-                <a href="#" onclick="prevPage()">&#8674;</a> {% endif %}
-            <span class="tooltiptext">صفحه قبل</span>
-            </div>
-
+                <a href="#" onclick="prevPage()">قبلی</a> {% endif %}
             </form>
 
             <span class="current">
-         صفحه {{ page_obj.number }}/{{ page_obj.paginator.num_pages }}
+        صفحه {{ page_obj.number }} از {{ page_obj.paginator.num_pages }}.
     </span> {% if page_obj.has_next %}
             <form id="next" method="post" action="{% url 'home' %}">
                 {% csrf_token %}
                 <input type="hidden" name="page" value="{{ page_obj.next_page_number }}"/>
                 <input type="hidden" name="province" value="{{ selected_province.pk }}"/>
                 <input type="hidden" name="zone" value="{{ selected_zone.pk }}"/>
-                <div class="tooltip">
-                    <a href="#" class="page-item" onclick="nextPage()">&#8672;</a>
-                    <span class="tooltiptext">صفحه بعد</span>
-                </div>
-
+                <a href="#" class="page-item" onclick="nextPage()">بعدی</a>
             </form>
             <form id="last" method="post" action="{% url 'home' %}">
             {% csrf_token %}
             <input type="hidden" name="page" value="{{ page_obj.paginator.num_pages }}"/>
             <input type="hidden" name="province" value="{{ selected_province.pk }}"/>
             <input type="hidden" name="zone" value="{{ selected_zone.pk }}"/>
-            <a href="#" onclick="lastPage()">آخرین</a> {% endif %}
+            <a href="#" onclick="lastPage()">آخرین &raquo;</a> {% endif %}
             </form>
         </nav>
     </div>
