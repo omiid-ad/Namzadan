@@ -60,7 +60,7 @@
         <div class="form-row">
             <div class="form-group col-md-3 ">
                 <label for="">استان</label>
-                <select name="province" id="inputProvince" class="form-control" onchange="getCities(this.value)">
+                <select name="province" id="inputProvince" class="form-control" onclick="getCities(this.value)">
                     {% if all_provinces %}
                         <option value="none">استان</option>
                         {% for p in all_provinces %}
