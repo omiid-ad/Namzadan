@@ -153,18 +153,58 @@
     <div class="downpage-Pagination">
         <nav aria-label="Page navigation example">
             {% if page_obj.has_previous %}
-                <a class="page-item" href="?page=1">&laquo; نخست</a>
-                <a href="?page={{ page_obj.previous_page_number }}">قبلی</a> {% endif %}
+                <form id="first" method="post" action="{% url 'home' %}">
+                    {% csrf_token %}
+                    <input type="hidden" name="page" value="1"/>
+                    <input type="hidden" name="province" value="{{ selected_province.pk }}"/>
+                    <input type="hidden" name="zone" value="{{ selected_zone.pk }}"/>
+                    <a href="#" class="page-item" onclick="firstPage()">&laquo; نخست</a>
+                </form>
+                <form id="pre" method="post" action="{% url 'home' %}">
+                {% csrf_token %}
+                <input type="hidden" name="page" value="{{ page_obj.previous_page_number }}"/>
+                <input type="hidden" name="province" value="{{ selected_province.pk }}"/>
+                <input type="hidden" name="zone" value="{{ selected_zone.pk }}"/>
+                <a href="#" onclick="prevPage()">قبلی</a> {% endif %}
+            </form>
 
             <span class="current">
         صفحه {{ page_obj.number }} از {{ page_obj.paginator.num_pages }}.
     </span> {% if page_obj.has_next %}
-            <a class="page-item" href="?page={{ page_obj.next_page_number }}">بعدی</a>
-            <a href="?page={{ page_obj.paginator.num_pages }}">آخرین &raquo;</a> {% endif %}
+            <form id="next" method="post" action="{% url 'home' %}">
+                {% csrf_token %}
+                <input type="hidden" name="page" value="{{ page_obj.next_page_number }}"/>
+                <input type="hidden" name="province" value="{{ selected_province.pk }}"/>
+                <input type="hidden" name="zone" value="{{ selected_zone.pk }}"/>
+                <a href="#" class="page-item" onclick="nextPage()">بعدی</a>
+            </form>
+            <form id="last" method="post" action="{% url 'home' %}">
+            {% csrf_token %}
+            <input type="hidden" name="page" value="{{ page_obj.paginator.num_pages }}"/>
+            <input type="hidden" name="province" value="{{ selected_province.pk }}"/>
+            <input type="hidden" name="zone" value="{{ selected_zone.pk }}"/>
+            <a href="#" onclick="lastPage()">آخرین &raquo;</a> {% endif %}
+            </form>
         </nav>
     </div>
 </div>
 <script>
+    function firstPage() {
+        document.getElementById("first").submit();
+    }
+
+    function prevPage() {
+        document.getElementById("pre").submit();
+    }
+
+    function nextPage() {
+        document.getElementById("next").submit();
+    }
+
+    function lastPage() {
+        document.getElementById("last").submit();
+    }
+
     function removeOptions(selectbox) {
         var i;
         for (i = selectbox.options.length - 1; i >= 0; i--) {
