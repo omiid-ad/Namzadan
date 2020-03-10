@@ -60,7 +60,8 @@
         <div class="form-row">
             <div class="form-group col-md-3 ">
                 <label for="">استان</label>
-                <select name="province" id="inputProvince" class="form-control" onchange="getCities(this.value)" onclick="getCities(this.value)">
+                <select name="province" id="inputProvince" class="form-control" onchange="getCities(this.value)"
+                        onclick="getCities(this.value)">
                     {% if all_provinces %}
                         <option value="none">استان</option>
                         {% for p in all_provinces %}
@@ -189,6 +190,15 @@
     </div>
 </div>
 <script>
+
+    $(window).on('load', function () {
+        var obj = document.getElementById("inputProvince");
+        var pk = obj.options[obj.selectedIndex].value;
+        getCities(pk);
+        setTimeout(() => {  makeSelectedOption({{ selected_zone.pk }}); }, 1500);
+    });
+
+
     function firstPage() {
         document.getElementById("first").submit();
     }
@@ -238,9 +248,17 @@
                     }
                 }
             };
-
         }
+    }
 
+    function makeSelectedOption(pk) {
+        var e = document.getElementById("inputState");
+        for (let i = 0; i < e.options.length; i++) {
+            if(e.options[i].value == pk)
+            {
+                e.selectedIndex = i;
+            }
+        }
     }
 </script>
 <script src="https://netdna.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
