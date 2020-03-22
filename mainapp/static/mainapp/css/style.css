@@ -10,6 +10,15 @@
 }
 
 @media only screen and (max-width: 1200px) {
+    .desc-title {
+        padding: 1rem 0rem !important;
+        display: flex !important;
+        justify-content: space-around !important;
+        height: 10rem !important;
+        flex-wrap: wrap !important;
+        background: rgb(219, 0, 0) !important;
+        background: linear-gradient(0deg, rgba(219, 0, 0, 1) 0%, rgba(255, 255, 255, 1) 25%, rgba(214, 238, 220, 1) 75%, rgba(29, 160, 62, 1) 100%) !important;
+    }
     /* .right-sidebar {
         display: none;
     }
@@ -41,9 +50,9 @@
     .profile-picture {
         text-align: center !important;
     }
-    .slugan {
+    /* .slugan {
         display: none;
-    }
+    } */
     .griding-div {
         display: grid;
         grid-template-columns: 1fr !important;
@@ -329,6 +338,7 @@ h3.Aboutustitle {
 }
 
 span {
+    text-align: right;
     display: flex;
     justify-content: space-between;
 }
