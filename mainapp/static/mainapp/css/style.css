@@ -176,13 +176,15 @@ nav {
 span.current {
     display: inline-block;
 }
-nav > a {
+
+.page-item {
     text-align: center;
     text-decoration: none;
     font-size: small;
     color: #28a745;
 }
-nav > a:hover{
+
+.page-item:hover {
     text-decoration: dotted;
     cursor: pointer;
 }

@@ -170,11 +170,11 @@
                 <input type="hidden" name="page" value="{{ page_obj.previous_page_number }}"/>
                 <input type="hidden" name="province" value="{{ selected_province.pk }}"/>
                 <input type="hidden" name="zone" value="{{ selected_zone.pk }}"/>
-                <a href="#" onclick="prevPage()">قبلی</a> {% endif %}
+                <a href="#" class="page-item" onclick="prevPage()">قبلی</a> {% endif %}
             </form>
 
             <span class="current">
-        صفحه {{ page_obj.number }} از {{ page_obj.paginator.num_pages }}.
+        صفحه {{ page_obj.number }} از {{ page_obj.paginator.num_pages }}
     </span> {% if page_obj.has_next %}
             <form id="next" method="post" action="{% url 'home' %}">
                 {% csrf_token %}
@@ -188,7 +188,7 @@
             <input type="hidden" name="page" value="{{ page_obj.paginator.num_pages }}"/>
             <input type="hidden" name="province" value="{{ selected_province.pk }}"/>
             <input type="hidden" name="zone" value="{{ selected_zone.pk }}"/>
-            <a href="#" onclick="lastPage()">آخرین &raquo;</a> {% endif %}
+            <a href="#" class="page-item" onclick="lastPage()">آخرین &raquo;</a> {% endif %}
             </form>
         </nav>
     </div>
