@@ -38,6 +38,9 @@ def home(request):
                 Q(full_name__contains=search_text) | Q(nickname__contains=search_text) | Q(
                     code__contains=search_text)).order_by(
                 'resume', 'full_name').reverse()
+            if all_candidates.count() == 0:
+                messages.error(request, "نتیجه ای یافت نشد")
+                return redirect('home')
             paginator = Paginator(all_candidates, 90)
             page_number = 1
             try:
