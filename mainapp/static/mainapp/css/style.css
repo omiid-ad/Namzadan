@@ -19,6 +19,7 @@
         background: rgb(219, 0, 0) !important;
         background: linear-gradient(0deg, rgba(219, 0, 0, 1) 0%, rgba(255, 255, 255, 1) 25%, rgba(214, 238, 220, 1) 75%, rgba(29, 160, 62, 1) 100%) !important;
     }
+
     /* .right-sidebar {
         display: none;
     }
@@ -30,12 +31,14 @@
         justify-content: center;
         flex-wrap: wrap;
     }
+
     .main-body {
         display: grid;
         grid-template-columns: auto;
         grid-template-rows: auto;
         padding: 10px;
     }
+
     .Main-content {
         margin-top: 3rem;
         display: grid;
@@ -43,6 +46,7 @@
         grid-template-rows: auto;
         text-align: right;
     }
+
     /* .profile-picture {
         text-align: center;
         margin: 1rem 0rem;
@@ -50,6 +54,7 @@
     .profile-picture {
         text-align: center !important;
     }
+
     /* .slugan {
         display: none;
     } */
@@ -57,6 +62,7 @@
         display: grid;
         grid-template-columns: 1fr !important;
     }
+
     .user-info {
         display: grid;
         grid-template-columns: 1fr !important;
@@ -189,8 +195,7 @@ nav {
 
 .filters {
     border-radius: 15px;
-    border: 1px solid rgba(29, 160, 62, 1);
-    ;
+    border: 1px solid rgba(29, 160, 62, 1);;
     padding: 2rem;
     margin: 3rem 0rem;
     direction: rtl;
@@ -370,7 +375,7 @@ label {
 
 .alert {
     position: relative !important;
-    padding: .75rem 1.25rem!important;
+    padding: .75rem 1.25rem !important;
     margin-bottom: 0rem !important;
     border: 1px solid transparent !important;
     border-radius: .25rem !important;
@@ -406,4 +411,45 @@ label {
 .search-input::placeholder {
     font-size: small;
 
+}
+
+#button {
+    display: inline-block;
+    background-color: #FF9800;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    border-radius: 4px;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    transition: background-color .3s,
+    opacity .5s, visibility .5s;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 1000;
+}
+
+#button::after {
+    content: "\f077";
+    font-family: FontAwesome;
+    font-weight: normal;
+    font-style: normal;
+    font-size: 2em;
+    line-height: 50px;
+    color: #fff;
+}
+
+#button:hover {
+    cursor: pointer;
+    background-color: #333;
+}
+
+#button:active {
+    background-color: #555;
+}
+
+#button.show {
+    opacity: 1;
+    visibility: visible;
 }

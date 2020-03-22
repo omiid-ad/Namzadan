@@ -10,10 +10,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <link href="https://netdna.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Merriweather:400,900,900i" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'mainapp/css/style.css' %}">
 </head>
 
 <body>
+<a id="button"></a>
 <div class="desc-title">
         <span>
             <p class="textnav">انتخاب آگاهانه</p>
@@ -48,7 +51,8 @@
     <div>
         <form class="form-inline" method="post" action="{% url 'home' %}">
             {% csrf_token %}
-            <input name="search" class="search-input form-control mr-sm-2" type="search" placeholder="نام یا کد نامزد موردنظر را بنویسید" aria-label="Search">
+            <input name="search" class="search-input form-control mr-sm-2" type="search"
+                   placeholder="نام یا کد نامزد موردنظر را بنویسید" aria-label="Search">
             <button class="btn btn-outline-dark my-2 my-sm-0 Searchbutton" type="submit">جستجو</button>
         </form>
     </div>
@@ -190,12 +194,28 @@
     </div>
 </div>
 <script>
+    var btn = $('#button');
+
+    $(window).scroll(function () {
+        if ($(window).scrollTop() > 300) {
+            btn.addClass('show');
+        } else {
+            btn.removeClass('show');
+        }
+    });
+
+    btn.on('click', function (e) {
+        e.preventDefault();
+        $('html, body').animate({scrollTop: 0}, '300');
+    });
 
     $(window).on('load', function () {
         var obj = document.getElementById("inputProvince");
         var pk = obj.options[obj.selectedIndex].value;
         getCities(pk);
-        setTimeout(() => {  makeSelectedOption({{ selected_zone.pk }}); }, 1500);
+        setTimeout(() => {
+            makeSelectedOption({{ selected_zone.pk }});
+        }, 1500);
     });
 
 
@@ -254,8 +274,7 @@
     function makeSelectedOption(pk) {
         var e = document.getElementById("inputState");
         for (let i = 0; i < e.options.length; i++) {
-            if(e.options[i].value == pk)
-            {
+            if (e.options[i].value == pk) {
                 e.selectedIndex = i;
             }
         }
