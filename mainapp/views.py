@@ -35,10 +35,8 @@ def home(request):
         if 'search' in request.POST:
             search_text = str(request.POST['search'])
             all_candidates = Candidate.objects.filter(
-                Q(full_name__contains=search_text) | Q(nickname__contains=search_text) |
-                Q(father_name__contains=search_text) | Q(code__contains=search_text) |
-                Q(party__contains=search_text) |
-                Q(city__name__contains=search_text)).order_by(
+                Q(full_name__contains=search_text) | Q(nickname__contains=search_text) | Q(
+                    code__contains=search_text)).order_by(
                 'resume', 'full_name').reverse()
             paginator = Paginator(all_candidates, 90)
             page_number = 1
