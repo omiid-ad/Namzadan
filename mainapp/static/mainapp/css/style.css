@@ -392,3 +392,8 @@ label {
 .media-body {
     direction: rtl !important;
 }
+
+.search-input::placeholder {
+    font-size: small;
+
+}

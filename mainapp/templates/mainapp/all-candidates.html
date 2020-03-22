@@ -48,7 +48,7 @@
     <div>
         <form class="form-inline" method="post" action="{% url 'home' %}">
             {% csrf_token %}
-            <input name="search" class="form-control mr-sm-2" type="search" placeholder="جستجو" aria-label="Search">
+            <input name="search" class="search-input form-control mr-sm-2" type="search" placeholder="نام یا کد نامزد موردنظر را بنویسید" aria-label="Search">
             <button class="btn btn-outline-dark my-2 my-sm-0 Searchbutton" type="submit">جستجو</button>
         </form>
     </div>
