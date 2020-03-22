@@ -73,6 +73,11 @@ body {
     background: #f2f2f2;
 }
 
+.slugan {
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    color: white;
+}
+
 .page-container {
     margin-top: 40px;
 }
@@ -84,6 +89,12 @@ figure.user-card {
     border: 1px solid #e1e5f1;
     text-align: center;
     height: 405px !important;
+    transition: 0.2s;
+}
+
+figure.user-card:hover {
+    transform: scale(1.03);
+    border: 2px solid grey;
 }
 
 figure.user-card.red {
@@ -229,6 +240,13 @@ span.current {
 
 a.nav-link {
     color: black;
+    transition-duration: 0.2s;
+    transition-timing-function: ease-in;
+}
+
+a.nav-link:hover {
+    transform: scale(1.1);
+
 }
 
 button.navbar-toggler.collapsed {
@@ -367,6 +385,18 @@ p.textnav {
     margin: 0rem 2rem;
 }
 
+.left-motto {
+    text-shadow: -1px 0 red, 0 1px red, 1px 0 red, 0 -1px red;
+}
+
+.middle-motto {
+    text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+}
+
+.right-motto {
+    text-shadow: -1px 0 green, 0 1px green, 1px 0 green, 0 -1px green;
+}
+
 label {
     display: inline-block;
     margin-bottom: .5rem;
@@ -467,4 +497,11 @@ label {
 #button.show {
     opacity: 1;
     visibility: visible;
+}
+
+select[id*="input"] {
+    border: 0;
+    border-radius: 2px;
+    border-bottom: 1px solid green;
+    outline: none;
 }
