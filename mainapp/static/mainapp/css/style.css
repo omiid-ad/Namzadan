@@ -168,10 +168,23 @@ nav {
 }
 
 .downpage-Pagination {
-    margin-top: 2rem;
+    display: block;
     width: 100%;
-    display: flex;
-    justify-content: center;
+    text-align: center;
+}
+
+span.current {
+    display: inline-block;
+}
+nav > a {
+    text-align: center;
+    text-decoration: none;
+    font-size: small;
+    color: #28a745;
+}
+nav > a:hover{
+    text-decoration: dotted;
+    cursor: pointer;
 }
 
 .page-link {
