@@ -28,7 +28,7 @@
 </div>
 <!-- Nav -->
 
-<nav class="navbar navbar-expand-lg navigationbar">
+<nav class="navbar navbar-expand-lg navigationbar sticky-top">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" role="img" focusable="false">
@@ -52,8 +52,9 @@
         <form class="form-inline" method="post" action="{% url 'home' %}">
             {% csrf_token %}
             <input name="search" class="search-input form-control mr-sm-2" type="search"
-                   placeholder="نام یا کد نامزد موردنظر را بنویسید" aria-label="Search">
-            <button class="btn btn-outline-dark my-2 my-sm-0 Searchbutton" type="submit">جستجو</button>
+                   placeholder="قسمتی از کد یا نام نامزد را بنویسید" aria-label="Search">
+            <button class="btn btn-outline-dark my-2 my-sm-0 Searchbutton" type="submit"><i class="fa fa-search"></i>
+            </button>
         </form>
     </div>
 </nav>
@@ -155,43 +156,86 @@
 
         </div>
     </div>
-    <div class="downpage-Pagination">
-        <nav aria-label="Page navigation example">
+
+    <div class="container">
+        <ul class="pagination justify-content-center">
             {% if page_obj.has_previous %}
                 <form id="first" method="post" action="{% url 'home' %}">
                     {% csrf_token %}
                     <input type="hidden" name="page" value="1"/>
                     <input type="hidden" name="province" value="{{ selected_province.pk }}"/>
                     <input type="hidden" name="zone" value="{{ selected_zone.pk }}"/>
-                    <a href="#" class="page-item" onclick="firstPage()">&laquo; نخست</a>
+                    {#                    <a href="#" class="page-item" onclick="firstPage()">&laquo; نخست</a>#}
+                    <li class="page-item"><a class="page-link" href="#" onclick="firstPage()">نخست</a></li>
                 </form>
                 <form id="pre" method="post" action="{% url 'home' %}">
                 {% csrf_token %}
                 <input type="hidden" name="page" value="{{ page_obj.previous_page_number }}"/>
                 <input type="hidden" name="province" value="{{ selected_province.pk }}"/>
                 <input type="hidden" name="zone" value="{{ selected_zone.pk }}"/>
-                <a href="#" class="page-item" onclick="prevPage()">قبلی</a> {% endif %}
+                {#                <a href="#" class="page-item" onclick="prevPage()">قبلی</a> #}
+                <li class="page-item active"><a class="page-link" href="#" onclick="prevPage()">قبلی</a></li>
+            {% endif %}
             </form>
-
-            <span class="current">
-        صفحه {{ page_obj.number }} از {{ page_obj.paginator.num_pages }}
-    </span> {% if page_obj.has_next %}
-            <form id="next" method="post" action="{% url 'home' %}">
+            <li class="page-item active"><p class="page-link">{{ page_obj.number }}</p></li>
+            {% if page_obj.has_next %}
+                <form id="next" method="post" action="{% url 'home' %}">
+                    {% csrf_token %}
+                    <input type="hidden" name="page" value="{{ page_obj.next_page_number }}"/>
+                    <input type="hidden" name="province" value="{{ selected_province.pk }}"/>
+                    <input type="hidden" name="zone" value="{{ selected_zone.pk }}"/>
+                    {#                <a href="#" class="page-item" onclick="nextPage()">بعدی</a>#}
+                    <li class="page-item"><a class="page-link" href="#" onclick="nextPage()">بعدی</a></li>
+                </form>
+                <form id="last" method="post" action="{% url 'home' %}">
                 {% csrf_token %}
-                <input type="hidden" name="page" value="{{ page_obj.next_page_number }}"/>
+                <input type="hidden" name="page" value="{{ page_obj.paginator.num_pages }}"/>
                 <input type="hidden" name="province" value="{{ selected_province.pk }}"/>
                 <input type="hidden" name="zone" value="{{ selected_zone.pk }}"/>
-                <a href="#" class="page-item" onclick="nextPage()">بعدی</a>
+                {#                <a href="#" class="page-item" onclick="lastPage()">آخرین &raquo;</a>#}
+                <li class="page-item"><a class="page-link" href="#" onclick="lastPage()">آخرین</a></li>
+            {% endif %}
             </form>
-            <form id="last" method="post" action="{% url 'home' %}">
-            {% csrf_token %}
-            <input type="hidden" name="page" value="{{ page_obj.paginator.num_pages }}"/>
-            <input type="hidden" name="province" value="{{ selected_province.pk }}"/>
-            <input type="hidden" name="zone" value="{{ selected_zone.pk }}"/>
-            <a href="#" class="page-item" onclick="lastPage()">آخرین &raquo;</a> {% endif %}
-            </form>
-        </nav>
+        </ul>
     </div>
+
+{#    <div class="downpage-Pagination">#}
+{#        <nav aria-label="Page navigation example">#}
+{#            {% if page_obj.has_previous %}#}
+{#                <form id="first" method="post" action="{% url 'home' %}">#}
+{#                    {% csrf_token %}#}
+{#                    <input type="hidden" name="page" value="1"/>#}
+{#                    <input type="hidden" name="province" value="{{ selected_province.pk }}"/>#}
+{#                    <input type="hidden" name="zone" value="{{ selected_zone.pk }}"/>#}
+{#                    <a href="#" class="page-item" onclick="firstPage()">&laquo; نخست</a>#}
+{#                </form>#}
+{#                <form id="pre" method="post" action="{% url 'home' %}">#}
+{#                {% csrf_token %}#}
+{#                <input type="hidden" name="page" value="{{ page_obj.previous_page_number }}"/>#}
+{#                <input type="hidden" name="province" value="{{ selected_province.pk }}"/>#}
+{#                <input type="hidden" name="zone" value="{{ selected_zone.pk }}"/>#}
+{#                <a href="#" class="page-item" onclick="prevPage()">قبلی</a> {% endif %}#}
+{#            </form>#}
+{##}
+{#            <span class="current">#}
+{#        صفحه {{ page_obj.number }} از {{ page_obj.paginator.num_pages }}#}
+{#    </span> {% if page_obj.has_next %}#}
+{#            <form id="next" method="post" action="{% url 'home' %}">#}
+{#                {% csrf_token %}#}
+{#                <input type="hidden" name="page" value="{{ page_obj.next_page_number }}"/>#}
+{#                <input type="hidden" name="province" value="{{ selected_province.pk }}"/>#}
+{#                <input type="hidden" name="zone" value="{{ selected_zone.pk }}"/>#}
+{#                <a href="#" class="page-item" onclick="nextPage()">بعدی</a>#}
+{#            </form>#}
+{#            <form id="last" method="post" action="{% url 'home' %}">#}
+{#            {% csrf_token %}#}
+{#            <input type="hidden" name="page" value="{{ page_obj.paginator.num_pages }}"/>#}
+{#            <input type="hidden" name="province" value="{{ selected_province.pk }}"/>#}
+{#            <input type="hidden" name="zone" value="{{ selected_zone.pk }}"/>#}
+{#            <a href="#" class="page-item" onclick="lastPage()">آخرین &raquo;</a> {% endif %}#}
+{#            </form>#}
+{#        </nav>#}
+{#    </div>#}
 </div>
 <script>
     var btn = $('#button');

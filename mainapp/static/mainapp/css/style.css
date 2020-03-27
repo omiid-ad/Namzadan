@@ -71,6 +71,7 @@
 
 body {
     background: #f2f2f2;
+    overflow-x: hidden;
 }
 
 .slugan {
@@ -236,6 +237,7 @@ span.current {
 
 .navigationbar {
     background: #ffffff;
+    opacity: 80%;
 }
 
 a.nav-link {
@@ -246,7 +248,10 @@ a.nav-link {
 
 a.nav-link:hover {
     transform: scale(1.1);
-
+    text-decoration: underline;
+}
+a.nav-link:active{
+    transform: scale(0.9);
 }
 
 button.navbar-toggler.collapsed {

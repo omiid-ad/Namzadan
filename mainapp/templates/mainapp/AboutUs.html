@@ -25,7 +25,7 @@
     <span class="slugan">معرفی نامزدهای انتخابات یازدهمین دوره مجلس شورای اسلامی</span>
 
 </div>
-<nav class="navbar navbar-expand-lg navigationbar">
+<nav class="navbar navbar-expand-lg navigationbar sticky-top">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" role="img" focusable="false">
@@ -49,8 +49,8 @@
         <form class="form-inline" method="post" action="{% url 'home' %}">
             {% csrf_token %}
             <input name="search" class="search-input form-control mr-sm-2" type="search"
-                   placeholder="نام یا کد نامزد موردنظر را بنویسید" aria-label="Search">
-            <button class="btn btn-outline-dark my-2 my-sm-0 Searchbutton" type="submit">جستجو</button>
+                   placeholder="قسمتی از کد یا نام نامزد را بنویسید" aria-label="Search">
+            <button class="btn btn-outline-dark my-2 my-sm-0 Searchbutton" type="submit"><i class="fa fa-search"></i></button>
         </form>
     </div>
 </nav>
