@@ -250,7 +250,8 @@ a.nav-link:hover {
     transform: scale(1.1);
     text-decoration: underline;
 }
-a.nav-link:active{
+
+a.nav-link:active {
     transform: scale(0.9);
 }
 
