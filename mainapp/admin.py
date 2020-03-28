@@ -63,7 +63,7 @@ class ResumeC(ResumeA, ResumeB):
 
 
 admin.site.unregister(Group)
-admin.site.unregister(User)
+# admin.site.unregister(User)
 admin.site.unregister(Attachment)
 
 admin.site.register(Candidate, CandidateC)
