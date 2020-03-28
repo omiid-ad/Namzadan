@@ -19,9 +19,9 @@
 <a id="button"></a>
 <div class="desc-title">
         <span>
-            <p class="textnav">انتخاب آگاهانه</p>
-            <p class="textnav">حفظ زیبایی</p>
-            <p class="textnav">تبلیغات ماندگار</p>
+            <p class="textnav left-motto">انتخاب آگاهانه</p>
+            <p class="textnav middle-motto">حفظ زیبایی</p>
+            <p class="textnav right-motto">تبلیغات ماندگار</p>
         </span>
     <span class="slugan">معرفی نامزدهای انتخابات یازدهمین دوره مجلس شورای اسلامی</span>
 
@@ -101,14 +101,14 @@
                     <ul class="list-unstyled">
                         <li class="media">
                             <div class="media-body">
-                                <h5 class="mt-0 mb-1 Resumetitle"> معرفی برنامه ها</h5>
+                                <h5 class="mt-0 mb-1 Resumetitle">- معرفی برنامه ها</h5>
                                 {% if not resume.moarefi_barnameha %}
                                     اطلاعاتی وارد نشده است
                                 {% else %}
                                     {{ resume.moarefi_barnameha | safe }}
                                 {% endif %}
 
-                                <h5 class="mt-0 mb-1 biographytitle"> سوابق مدیریتی</h5>
+                                <h5 class="mt-0 mb-1 biographytitle"> - سوابق مدیریتی</h5>
                                 {% if not resume.records %}
                                     اطلاعاتی وارد نشده است
                                 {% else %}

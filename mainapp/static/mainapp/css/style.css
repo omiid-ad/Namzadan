@@ -285,10 +285,14 @@ button.navbar-toggler.collapsed {
 
 .Resumetitle {
     margin-bottom: 2rem !important;
+    text-decoration: underline;
+    color: black!important;
 }
 
 .biographytitle {
     margin: 2rem 0rem !important;
+    text-decoration: underline;
+    color: black!important;
 }
 
 .Past-Activities {
@@ -510,4 +514,8 @@ select[id*="input"] {
     border-radius: 2px;
     border-bottom: 1px solid green;
     outline: none;
+}
+
+.pagination {
+    margin-top: 15px;
 }
