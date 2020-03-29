@@ -5,6 +5,11 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: "IRANSans(BOLD)";
+    src: url("../fonts/ttf/IRANSansWeb_Bold.ttf");
+}
+
 * {
     font-family: IRANSans, sans-serif;
 }
@@ -284,15 +289,23 @@ button.navbar-toggler.collapsed {
 }
 
 .Resumetitle {
+    font-family: "IRANSans(BOLD)", serif;
     margin-bottom: 2rem !important;
-    text-decoration: underline;
-    color: black!important;
+    color: black !important;
+    border-bottom: 1px solid black;
+    padding-bottom: 10px;
+    border-bottom-style: dashed;
+    width: fit-content;
 }
 
 .biographytitle {
+    font-family: "IRANSans(BOLD)", serif;
     margin: 2rem 0rem !important;
-    text-decoration: underline;
-    color: black!important;
+    color: black !important;
+    border-bottom: 1px solid black;
+    padding-bottom: 10px;
+    border-bottom-style: dashed;
+    width: fit-content;
 }
 
 .Past-Activities {
