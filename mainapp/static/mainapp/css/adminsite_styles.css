@@ -1,0 +1,46 @@
+@font-face {
+    font-family: "IRANSans";
+    src: url('../fonts/ttf/IRANSansWeb.ttf');
+    font-weight: 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "IRANSans(BOLD)";
+    src: url("../fonts/ttf/IRANSansWeb_Bold.ttf");
+}
+
+*, input, textarea, select, .form-row p, form .button {
+    font-family: IRANSans, sans-serif !important;
+}
+
+th, td {
+    vertical-align: middle;
+    text-align: center;
+}
+
+th > div > a, th > div {
+    text-align: center;
+}
+
+tr > th[class^="field-"] {
+    text-align: center;
+}
+
+.row2 {
+    background-color: #d1ecf9;
+}
+
+.row2:hover {
+    background-color: #79AEC8;
+    transition: 0.2s background-color;
+}
+
+.row1:hover {
+    background-color: #d0c9c9;
+    transition: 0.2s background-color;
+}
+
+.row2.selected, .row1.selected {
+    background-color: #b5efb5 !important;
+}
