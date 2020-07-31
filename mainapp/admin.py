@@ -7,9 +7,9 @@ from .models import *
 
 
 class CandidateA(admin.ModelAdmin):
-    list_display = ('full_name', 'code', 'party', 'city')
-    list_filter = ('city', 'party',)
-    search_fields = ['code', 'full_name']
+    list_display = ('full_name', 'get_profile_picture', 'code', 'party', 'city', 'get_resume')
+    list_filter = ('party',)
+    search_fields = ['code', 'full_name', 'city__name']
     fieldsets = (
         (None, {
             'fields': (('full_name', 'father_name', 'code', 'party', 'city'), 'profile_picture_url')
@@ -30,17 +30,19 @@ class CandidateC(CandidateA, CandidateB):
 
 
 class ProvinceA(admin.ModelAdmin):
-    list_display = ('name',)
+    list_display = ('name', 'get_city_count')
+    search_fields = ['name', ]
 
 
 class CityA(admin.ModelAdmin):
     list_display = ('name', 'province')
     list_filter = ('province',)
+    search_fields = ['name', 'province__name']
 
 
 class ResumeA(admin.ModelAdmin):
-    list_display = ('candidate', 'age', 'degree',)
-    list_filter = ('field', 'degree', 'candidate__city',)
+    list_display = ('candidate', 'age', 'degree', 'get_truncated_moarefi_barnameha')
+    list_filter = ('field', 'degree',)
     search_fields = ['candidate__full_name', 'candidate__code']
     fieldsets = (
         (None, {
@@ -62,6 +64,11 @@ class ResumeC(ResumeA, ResumeB):
     pass
 
 
+class GlobalAdsA(admin.ModelAdmin):
+    list_display = ('candidate', 'get_banner_thumb')
+    search_fields = ['candidate__full_name', 'candidate__code']
+
+
 admin.site.unregister(Group)
 # admin.site.unregister(User)
 admin.site.unregister(Attachment)
@@ -70,6 +77,4 @@ admin.site.register(Candidate, CandidateC)
 admin.site.register(Resume, ResumeC)
 admin.site.register(Province, ProvinceA)
 admin.site.register(City, CityA)
-admin.site.register(GlobalAds)
-
-admin.site.site_header = "نامزدان دات آی آر"
+admin.site.register(GlobalAds, GlobalAdsA)
